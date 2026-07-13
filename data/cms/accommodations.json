@@ -1,0 +1,585 @@
+[
+  {
+    "title": "Likuliku Lagoon Resort",
+    "slug": "likuliku-lagoon",
+    "location": "Mamanuca Islands",
+    "stars": 5,
+    "priceFrom": "FJD 1,850",
+    "overview": "Fiji's only resort with overwater bures, Likuliku pairs adults-only intimacy with world-class dining and a lagoon that glows at sunset.",
+    "heroImage": "https://images.unsplash.com/photo-1700619769904-3e2bedeb2c51?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Overwater bures",
+      "Adults only",
+      "Spa",
+      "Private beach",
+      "Fine dining"
+    ],
+    "experiences": [
+      "Snorkelling",
+      "Sunset cruise",
+      "Spa rituals"
+    ],
+    "relatedSlugs": [
+      "tokoriki-island",
+      "castaway-island"
+    ],
+    "collection": null,
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 0,
+    "id": "9e57ee47-e44f-4257-97a1-f47688e63c86",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Tokoriki Island Resort",
+    "slug": "tokoriki-island",
+    "location": "Mamanuca Islands",
+    "stars": 5,
+    "priceFrom": "FJD 1,200",
+    "overview": "An intimate 36-bure island where barefoot luxury meets Fijian warmth — perfect for honeymoons and milestone celebrations.",
+    "heroImage": "https://images.unsplash.com/photo-1654180363018-c5a0a308ae02?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Beachfront bures",
+      "Spa",
+      "Diving centre",
+      "Private dining"
+    ],
+    "experiences": [
+      "Diving",
+      "Island picnic",
+      "Village visit"
+    ],
+    "relatedSlugs": [
+      "likuliku-lagoon",
+      "hilton-fiji"
+    ],
+    "collection": null,
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 1,
+    "id": "bbaea3dc-e8f5-42c9-b198-687ad3873140",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Hilton Fiji Beach Resort & Spa",
+    "slug": "hilton-fiji",
+    "location": "Denarau",
+    "stars": 5,
+    "priceFrom": "FJD 650",
+    "overview": "Denarau's flagship family-friendly luxury — expansive pools, championship adjacency and seamless marina access for island adventures.",
+    "heroImage": "https://images.unsplash.com/photo-1731978242575-31c0357ec7c8?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Multiple pools",
+      "Kids' club",
+      "Spa",
+      "Marina access",
+      "7 restaurants"
+    ],
+    "experiences": [
+      "Island hopping",
+      "Golf",
+      "Sunset cruise"
+    ],
+    "relatedSlugs": [
+      "sofitel-fiji",
+      "tokoriki-island",
+      "likuliku-lagoon"
+    ],
+    "collection": null,
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 2,
+    "id": "15f8c3d9-9690-4e52-9d5e-1cd47c55f9b9",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Sofitel Fiji Resort & Spa",
+    "slug": "sofitel-fiji",
+    "location": "Denarau",
+    "stars": 5,
+    "priceFrom": "FJD 580",
+    "overview": "French-polished luxury on Denarau's best beach — floating breakfasts, reef access and Sofitel's signature spa philosophy.",
+    "heroImage": "https://images.unsplash.com/photo-1730946450247-a09fa58fee94?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Beachfront",
+      "Spa",
+      "Reef snorkelling",
+      "Kids' club"
+    ],
+    "experiences": [
+      "Reef snorkel",
+      "Spa day",
+      "Cultural night"
+    ],
+    "relatedSlugs": [
+      "hilton-fiji",
+      "intercontinental-coral-coast"
+    ],
+    "collection": null,
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 3,
+    "id": "b6700600-af2f-4c49-83b9-54da3aefe8e6",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "InterContinental Fiji Golf Resort & Spa",
+    "slug": "intercontinental-coral-coast",
+    "location": "Coral Coast",
+    "stars": 5,
+    "priceFrom": "FJD 720",
+    "overview": "Natadola Beach's crown jewel — championship golf, Natadola's legendary sands and village culture on your doorstep.",
+    "heroImage": "https://images.unsplash.com/photo-1579264670612-6eb62a173aec?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Natadola Beach",
+      "Golf course",
+      "Spa",
+      "Kids' club",
+      "Cultural centre"
+    ],
+    "experiences": [
+      "Village tour",
+      "Golf",
+      "Horse riding on beach"
+    ],
+    "relatedSlugs": [
+      "sofitel-fiji",
+      "likuliku-lagoon"
+    ],
+    "collection": null,
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 4,
+    "id": "e7cd2948-9273-4161-8c5a-63c2418e01e7",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Radisson Blu Resort Fiji",
+    "slug": "radisson-blu-fiji",
+    "location": "Denarau",
+    "stars": 5,
+    "priceFrom": "FJD 620",
+    "overview": "Beachfront Denarau luxury with lagoon pools, reef snorkelling off the jetty and direct marina access for Mamanuca day cruises.",
+    "heroImage": "https://images.unsplash.com/photo-1654180714269-9667f416a93f?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Beachfront",
+      "Lagoon pools",
+      "Spa",
+      "Marina access",
+      "Kids' club"
+    ],
+    "experiences": [
+      "Island day cruise",
+      "Reef snorkel",
+      "Sunset cruise"
+    ],
+    "relatedSlugs": [
+      "hilton-fiji",
+      "sofitel-fiji",
+      "tanoa-skylodge"
+    ],
+    "collection": null,
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 5,
+    "id": "cc0e0852-56d4-449f-9fd5-7e0059034547",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Tanoa Skylodge Hotel",
+    "slug": "tanoa-skylodge",
+    "location": "Nadi",
+    "stars": 4,
+    "priceFrom": "FJD 220",
+    "overview": "Hillside Nadi retreat minutes from the airport — tropical gardens, sunset views and a relaxed base before island transfers.",
+    "heroImage": "https://images.unsplash.com/photo-1730946450226-d15e3bca7877?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Airport shuttle",
+      "Pool",
+      "Restaurant",
+      "Garden views"
+    ],
+    "experiences": [
+      "Temple tour",
+      "Sabeto mud pools",
+      "Market visit"
+    ],
+    "relatedSlugs": [
+      "hilton-fiji",
+      "radisson-blu-fiji",
+      "sofitel-fiji"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 6,
+    "id": "84d5ba0c-d700-4ff9-8d48-2aa01c5d73ae",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Castaway Island, Fiji",
+    "slug": "castaway-island",
+    "location": "Mamanuca Islands",
+    "stars": 4,
+    "priceFrom": "FJD 890",
+    "overview": "The island that defined Fiji for a generation — family-friendly, reef-fringed and effortlessly authentic.",
+    "heroImage": "https://images.unsplash.com/photo-1654180666810-1936b84ab4e3?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Private island",
+      "PADI centre",
+      "Kids' club",
+      "Multiple beaches"
+    ],
+    "experiences": [
+      "Snorkelling",
+      "Kayaking",
+      "Village visit"
+    ],
+    "relatedSlugs": [
+      "likuliku-lagoon",
+      "tokoriki-island"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 7,
+    "id": "2f11a463-4a10-47b2-bc9f-a78ccb8564c2",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Fiji Marriott Resort Momi Bay",
+    "slug": "fiji-marriott-nadi",
+    "location": "Nadi",
+    "stars": 5,
+    "priceFrom": "FJD 520",
+    "overview": "Lagoon bures and overwater villas on Momi Bay — Nadi's newest luxury address with reef access and sunset-facing pools.",
+    "heroImage": "https://images.unsplash.com/photo-1730946450226-d15e3bca7877?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Overwater villas",
+      "Lagoon pools",
+      "Spa",
+      "Reef snorkelling"
+    ],
+    "experiences": [
+      "Reef snorkel",
+      "Sunset cruise",
+      "Cultural night"
+    ],
+    "relatedSlugs": [
+      "hilton-fiji",
+      "intercontinental-coral-coast"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 8,
+    "id": "db520638-596c-4c3b-b006-14f89a876680",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Grand Pacific Hotel",
+    "slug": "grand-pacific-hotel-suva",
+    "location": "Suva",
+    "stars": 5,
+    "priceFrom": "FJD 380",
+    "overview": "Colonial grande dame on Suva Harbour — heritage suites, harbour dining and the capital's most storied luxury address.",
+    "heroImage": "https://images.unsplash.com/photo-1449347206122-792f0e389512?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Harbour views",
+      "Heritage suites",
+      "Fine dining",
+      "Pool"
+    ],
+    "experiences": [
+      "City heritage walk",
+      "Museum tour",
+      "Market visit"
+    ],
+    "relatedSlugs": [
+      "intercontinental-coral-coast",
+      "hilton-fiji"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 9,
+    "id": "e2e7f627-9d34-4101-8f63-12dbf95b64d5",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Taveuni Island Resort & Spa",
+    "slug": "taveuni-island-resort",
+    "location": "Taveuni",
+    "stars": 4,
+    "priceFrom": "FJD 490",
+    "overview": "Oceanfront bures on Taveuni's north coast — spa pavilion, dive centre and Rainbow Reef access from the Garden Island.",
+    "heroImage": "https://images.unsplash.com/photo-1543716349-79942dce62c9?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Oceanfront bures",
+      "Spa",
+      "Dive centre",
+      "Restaurant"
+    ],
+    "experiences": [
+      "Rainbow Reef dive",
+      "Waterfall hike",
+      "Kayaking"
+    ],
+    "relatedSlugs": [
+      "intercontinental-coral-coast",
+      "likuliku-lagoon"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 10,
+    "id": "c84b512b-32fb-4ab9-a38b-fc2d5fb62e0a",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "The Pearl South Pacific",
+    "slug": "pearl-south-pacific",
+    "location": "Pacific Harbour",
+    "stars": 4,
+    "priceFrom": "FJD 420",
+    "overview": "Pacific Harbour's flagship resort — marina, championship golf adjacency and adventure concierge for shark dives and rafting.",
+    "heroImage": "https://images.unsplash.com/photo-1654180639088-65f1bc3312d6?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Marina",
+      "Pools",
+      "Spa",
+      "Adventure desk"
+    ],
+    "experiences": [
+      "Shark dive",
+      "River rafting",
+      "Golf"
+    ],
+    "relatedSlugs": [
+      "intercontinental-coral-coast",
+      "grand-pacific-hotel-suva"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 11,
+    "id": "65f8b3d0-e543-4756-9c52-bda25ada1f57",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Namale Resort & Spa",
+    "slug": "namale-resort-spa",
+    "location": "Savusavu",
+    "stars": 5,
+    "priceFrom": "FJD 890",
+    "overview": "200-acre Savusavu estate — private villas, volcanic hot springs and Great Sea Reef diving from Fiji's north.",
+    "heroImage": "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Private villas",
+      "Hot springs",
+      "Spa",
+      "Dive centre"
+    ],
+    "experiences": [
+      "Reef diving",
+      "Hot springs",
+      "Plantation tour"
+    ],
+    "relatedSlugs": [
+      "taveuni-island-resort",
+      "pearl-south-pacific"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 12,
+    "id": "ec7f272d-fd3a-4768-9ce3-41ea7b91f1af",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Matava Eco Resort",
+    "slug": "matava-eco-resort",
+    "location": "Kadavu",
+    "stars": 4,
+    "priceFrom": "FJD 450",
+    "overview": "Eco-bures on Kadavu's Astrolabe Reef — sustainable luxury, manta channels and intimate dive groups.",
+    "heroImage": "https://images.unsplash.com/photo-1718152220002-6708fe3894a5?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Eco-bures",
+      "Dive centre",
+      "Organic dining",
+      "Reef access"
+    ],
+    "experiences": [
+      "Astrolabe diving",
+      "Village visit",
+      "Kayaking"
+    ],
+    "relatedSlugs": [
+      "taveuni-island-resort",
+      "namale-resort-spa"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 13,
+    "id": "1286a616-671a-4245-badd-887897b24be9",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Beqa Lagoon Resort",
+    "slug": "beqa-lagoon-resort",
+    "location": "Beqa Island",
+    "stars": 4,
+    "priceFrom": "FJD 520",
+    "overview": "Intimate island resort on Beqa — firewalking village access, lagoon snorkelling and shark dive departures.",
+    "heroImage": "https://images.unsplash.com/photo-1734343470199-dcef3f2104af?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Beach bures",
+      "Dive centre",
+      "Cultural access",
+      "Restaurant"
+    ],
+    "experiences": [
+      "Firewalking",
+      "Shark dive",
+      "Lagoon snorkel"
+    ],
+    "relatedSlugs": [
+      "pearl-south-pacific",
+      "intercontinental-coral-coast"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 14,
+    "id": "65dd4bb5-851d-4d23-b380-c5d6f018e942",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Mana Island Resort & Spa",
+    "slug": "mana-island-resort",
+    "location": "Mana Island",
+    "stars": 4,
+    "priceFrom": "FJD 680",
+    "overview": "Family-friendly Mana Island — house reef, kids' club and Mamanuca lagoon access from a classic Fiji island base.",
+    "heroImage": "https://images.unsplash.com/photo-1692659505534-a1abd5eb4c73?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "House reef",
+      "Kids' club",
+      "Spa",
+      "Water sports"
+    ],
+    "experiences": [
+      "Snorkel safari",
+      "Kayaking",
+      "Sunset cruise"
+    ],
+    "relatedSlugs": [
+      "castaway-island",
+      "tokoriki-island"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 15,
+    "id": "2e25f573-8f60-48fb-8160-ef4c24755158",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Malolo Island Resort",
+    "slug": "malolo-island-resort",
+    "location": "Malolo Island",
+    "stars": 4,
+    "priceFrom": "FJD 720",
+    "overview": "Beachfront bures on Malolo — turtle reef, island hikes and barefoot Mamanuca luxury without the crowds.",
+    "heroImage": "https://images.unsplash.com/photo-1559940626-639e49dcbe69?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Beachfront bures",
+      "Reef access",
+      "Restaurant",
+      "Water sports"
+    ],
+    "experiences": [
+      "Reef snorkel",
+      "Island hike",
+      "Beach picnic"
+    ],
+    "relatedSlugs": [
+      "mana-island-resort",
+      "castaway-island"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 16,
+    "id": "85069c8c-4fc7-49dd-94db-dc1bc7595e5e",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  },
+  {
+    "title": "Yasawa Island Resort & Spa",
+    "slug": "yasawa-island-resort",
+    "location": "Yasawa Islands",
+    "stars": 5,
+    "priceFrom": "FJD 1,150",
+    "overview": "Private island resort in the Yasawas — thatched bures, Blue Lagoon access and exclusive cave expeditions.",
+    "heroImage": "https://images.unsplash.com/photo-1683951443218-850f929b65e4?w=1400&q=90&auto=format",
+    "gallery": [],
+    "amenities": [
+      "Private island",
+      "Thatched bures",
+      "Spa",
+      "Blue Lagoon access"
+    ],
+    "experiences": [
+      "Cave expedition",
+      "Village visit",
+      "Sunset sail"
+    ],
+    "relatedSlugs": [
+      "likuliku-lagoon",
+      "tokoriki-island"
+    ],
+    "collection": null,
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 17,
+    "id": "5beb22fc-9440-47d4-87e9-29e1c3e55dab",
+    "createdAt": "2026-06-23T04:45:38.948Z",
+    "updatedAt": "2026-06-23T04:45:38.948Z"
+  }
+]

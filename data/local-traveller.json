@@ -1,0 +1,10 @@
+{
+  "id": "local-traveller",
+  "email": "demo.traveller@myfijitour.com",
+  "firstName": "Fiji",
+  "lastName": "Explorer",
+  "passwordHash": "$2b$12$MU1bjaVyLPVA.CKw1tSoe.UywgYdM7/PZqjzbtK9FGuhFlqxz6R.W",
+  "loyaltyPoints": 2840,
+  "loyaltyTier": "VOYAGER",
+  "walletBalance": 150
+}

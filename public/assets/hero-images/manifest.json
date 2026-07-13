@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "generatedAt": "2026-06-19T12:45:00.000Z",
+  "license": "Unsplash License (free commercial use)",
+  "optimization": {
+    "width": 2880,
+    "height": 1620,
+    "aspect": "16:9",
+    "quality": 95,
+    "format": "jpeg",
+    "fit": "crop"
+  },
+  "images": [
+    {
+      "id": "fiji-00",
+      "file": "fiji-00.png",
+      "src": "/assets/hero-images/fiji-00.png",
+      "title": "Private sandbar pavilion",
+      "theme": "Secluded sandbar retreat — turquoise shallows and deep Pacific blue",
+      "island": "Fiji Islands",
+      "alt": "Aerial view of a glass pavilion on a white sandbar in turquoise Fiji lagoon at golden hour",
+      "custom": true,
+      "objectPosition": "center center",
+      "source": "neyum-custom-hero"
+    },
+    {
+      "id": "fiji-01",
+      "file": "fiji-01.jpg",
+      "src": "/assets/hero-images/fiji-01.jpg",
+      "title": "Fiji archipelago",
+      "theme": "Scattered islands in crystal Pacific",
+      "island": "Fiji Islands",
+      "alt": "Fiji archipelago — Scattered islands in crystal Pacific",
+      "unsplashId": "1694604359217-8e992b813d3c",
+      "objectPosition": "center 42%",
+      "bytes": 514804,
+      "source": "https://images.unsplash.com/photo-1694604359217-8e992b813d3c?w=2880&h=1620&fit=crop&crop=entropy&q=95&auto=format&fm=jpg"
+    },
+    {
+      "id": "fiji-02",
+      "file": "fiji-02.jpg",
+      "src": "/assets/hero-images/fiji-02.jpg",
+      "title": "Reef lagoon",
+      "theme": "Drone over emerald reef channels",
+      "island": "Yasawa Islands",
+      "alt": "Reef lagoon — Drone over emerald reef channels",
+      "unsplashId": "1731978242403-16bf5d103e06",
+      "objectPosition": "center 38%",
+      "bytes": 385571,
+      "source": "https://images.unsplash.com/photo-1731978242403-16bf5d103e06?w=2880&h=1620&fit=crop&crop=entropy&q=95&auto=format&fm=jpg"
+    },
+    {
+      "id": "fiji-03",
+      "file": "fiji-03.jpg",
+      "src": "/assets/hero-images/fiji-03.jpg",
+      "title": "Island chain",
+      "theme": "Volcanic peaks rising from blue Pacific",
+      "island": "Mamanuca Islands",
+      "alt": "Island chain — Volcanic peaks rising from blue Pacific",
+      "unsplashId": "1664016422278-2ce49aac3d0f",
+      "objectPosition": "center 36%",
+      "bytes": 1156579,
+      "source": "https://images.unsplash.com/photo-1664016422278-2ce49aac3d0f?w=2880&h=1620&fit=crop&crop=entropy&q=95&auto=format&fm=jpg"
+    }
+  ]
+}

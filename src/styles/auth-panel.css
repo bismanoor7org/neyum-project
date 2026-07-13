@@ -1,0 +1,1391 @@
+/* Premium authentication experience */
+
+html:has(.auth-experience),
+html:has(.auth-experience) body {
+  height: 100%;
+}
+
+@media (min-width: 1024px) {
+  html:has(.auth-experience),
+  html:has(.auth-experience) body {
+    overflow: hidden;
+  }
+}
+
+.auth-experience {
+  --auth-glass: color-mix(in srgb, var(--cream) 14%, transparent);
+  --auth-glass-border: color-mix(in srgb, var(--gold) 24%, rgba(255, 255, 255, 0.14) 76%);
+  --auth-input-bg: color-mix(in srgb, var(--cream) 92%, var(--white) 8%);
+  --auth-hero-shadow: 0 2px 28px rgba(var(--navy-deep-rgb), 0.42), 0 1px 4px rgba(var(--navy-deep-rgb), 0.28);
+  min-height: 100svh;
+}
+
+@media (min-width: 1024px) {
+  .auth-experience {
+    height: 100svh;
+    max-height: 100svh;
+    overflow: hidden;
+  }
+}
+
+.auth-form-shell {
+  width: 100%;
+  transform-origin: center center;
+}
+
+@media (min-width: 1024px) and (max-height: 920px) {
+  .auth-form-shell {
+    transform: scale(0.94);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 820px) {
+  .auth-form-shell {
+    transform: scale(0.88);
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 720px) {
+  .auth-form-shell {
+    transform: scale(0.82);
+  }
+}
+
+.auth-split-visual {
+  position: relative;
+  isolation: isolate;
+}
+
+.auth-split-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--navy-deep-rgb), 0.62) 0%,
+      rgba(var(--navy-deep-rgb), 0.18) 30%,
+      rgba(var(--navy-deep-rgb), 0.22) 68%,
+      rgba(var(--navy-deep-rgb), 0.74) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(var(--navy-deep-rgb), 0.8) 0%,
+      rgba(var(--navy-rgb), 0.48) 44%,
+      rgba(var(--navy-rgb), 0.66) 100%
+    );
+  z-index: 1;
+}
+
+/* Hero copy — premium panel, readable type, constrained measure */
+.auth-split-visual > div > div {
+  min-width: 0;
+}
+
+.auth-split-visual .max-w-lg {
+  position: relative;
+  isolation: isolate;
+  max-width: min(32rem, 100%);
+}
+
+.auth-split-visual .max-w-lg::before {
+  content: "";
+  position: absolute;
+  inset: -1.15rem -1.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.05) 52%,
+      rgba(var(--gold-rgb), 0.06) 100%
+    );
+  box-shadow:
+    0 18px 48px rgba(var(--navy-deep-rgb), 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px);
+  z-index: -1;
+}
+
+.auth-split-visual .max-w-lg > p:first-of-type {
+  color: var(--gold-eyebrow);
+  text-shadow: var(--auth-hero-shadow);
+}
+
+.auth-split-visual h1 {
+  max-width: 18ch;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: var(--auth-hero-shadow);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.auth-split-visual .max-w-lg > p:not(:first-of-type) {
+  max-width: 34ch;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.65;
+  text-shadow: 0 1px 16px rgba(var(--navy-deep-rgb), 0.38);
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.auth-split-visual .shrink-0.text-xs {
+  max-width: 24ch;
+  color: rgba(255, 255, 255, 0.52);
+  text-shadow: 0 1px 10px rgba(var(--navy-deep-rgb), 0.45);
+  overflow-wrap: break-word;
+}
+
+/* Login hero — light cream glass on image panel */
+.auth-split-visual--light .max-w-lg::before {
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, rgba(var(--navy-deep-rgb), 0.08) 78%);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--cream) 90%, transparent) 0%,
+      color-mix(in srgb, var(--white) 78%, transparent) 52%,
+      color-mix(in srgb, var(--cream-muted) 82%, transparent) 100%
+    );
+  box-shadow:
+    0 18px 48px rgba(var(--navy-deep-rgb), 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.auth-split-visual--light h1 {
+  color: var(--navy);
+  text-shadow: none;
+}
+
+.auth-split-visual--light .max-w-lg > p {
+  color: color-mix(in srgb, var(--navy) 72%, transparent);
+  text-shadow: none;
+}
+
+.auth-split-visual--light .auth-trust-pill {
+  border-color: color-mix(in srgb, var(--gold) 30%, rgba(var(--navy-deep-rgb), 0.1) 70%);
+  background: color-mix(in srgb, var(--cream) 84%, rgba(255, 255, 255, 0.55) 16%);
+  color: var(--navy);
+  box-shadow: 0 4px 18px rgba(var(--navy-deep-rgb), 0.06);
+  text-shadow: none;
+}
+
+/* Form panel — site gold accent atmosphere */
+.auth-experience > .bg-navy {
+  background:
+    radial-gradient(ellipse 78% 46% at 92% 6%, rgba(var(--gold-rgb), 0.1) 0%, transparent 54%),
+    radial-gradient(ellipse 55% 38% at 6% 94%, rgba(var(--gold-rgb), 0.06) 0%, transparent 50%),
+    var(--navy);
+}
+
+.auth-glass-card {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--cream) 16%, rgba(255, 255, 255, 0.1) 84%) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 1px solid var(--auth-glass-border);
+  box-shadow:
+    0 24px 64px rgba(var(--navy-deep-rgb), 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 0 1px rgba(var(--gold-rgb), 0.05);
+  backdrop-filter: blur(28px);
+}
+
+/* Card typography hierarchy */
+.auth-experience .auth-glass-card > p:first-of-type {
+  color: var(--gold-eyebrow);
+  letter-spacing: 0.28em;
+}
+
+.auth-experience .auth-glass-card > h2 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  text-shadow: 0 1px 14px rgba(var(--navy-deep-rgb), 0.22);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.auth-experience .auth-glass-card > p:nth-of-type(2) {
+  max-width: 26rem;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.auth-experience .auth-form-shell {
+  min-width: 0;
+}
+
+/* Light-theme inputs — aligned with booking widget fields (site light mode only) */
+html:not(.dark) .auth-experience .auth-input {
+  padding: 0.72rem 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--auth-input-bg);
+  color: var(--navy);
+  box-shadow: inset 0 1px 2px rgba(var(--navy-deep-rgb), 0.04);
+}
+
+html:not(.dark) .auth-experience .auth-input::placeholder {
+  color: color-mix(in srgb, var(--navy) 42%, transparent);
+}
+
+html:not(.dark) .auth-experience .auth-input:hover {
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--border) 72%);
+  background: var(--white);
+}
+
+html:not(.dark) .auth-experience .auth-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--border) 45%);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 18%, transparent);
+  background: var(--white);
+}
+
+html:not(.dark) .auth-experience .auth-input--error {
+  border-color: color-mix(in srgb, var(--coral) 72%, var(--border) 28%);
+}
+
+.auth-experience .auth-btn-primary {
+  padding: 0.78rem 1.35rem;
+}
+
+html:not(.dark) .auth-experience .auth-btn-social {
+  padding: 0.68rem 0.9rem;
+  border-color: color-mix(in srgb, var(--border) 32%, rgba(255, 255, 255, 0.16) 68%);
+  background: color-mix(in srgb, var(--cream) 10%, rgba(255, 255, 255, 0.06) 90%);
+  color: rgba(255, 255, 255, 0.94);
+}
+
+html:not(.dark) .auth-experience .auth-btn-social:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--gold) 38%, rgba(255, 255, 255, 0.2) 62%);
+  background: color-mix(in srgb, var(--cream) 16%, rgba(255, 255, 255, 0.1) 84%);
+}
+
+html:not(.dark) .auth-experience .auth-trust-pill {
+  padding: 0.38rem 0.75rem;
+  border-color: color-mix(in srgb, var(--gold) 20%, rgba(255, 255, 255, 0.16) 80%);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 18px rgba(var(--navy-deep-rgb), 0.14);
+  text-shadow: 0 1px 8px rgba(var(--navy-deep-rgb), 0.28);
+}
+
+html:not(.dark) .auth-experience .auth-admin-portal-btn {
+  border-color: color-mix(in srgb, var(--gold) 16%, rgba(255, 255, 255, 0.12) 84%);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+html:not(.dark) .auth-experience .auth-admin-portal-btn:hover {
+  border-color: color-mix(in srgb, var(--gold) 42%, transparent);
+  color: #fff;
+}
+
+html:not(.dark) .auth-experience .auth-glass-card label {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+html:not(.dark) .auth-experience .auth-glass-card .relative.my-4 span {
+  color: color-mix(in srgb, var(--gold) 32%, rgba(255, 255, 255, 0.45) 68%);
+}
+
+html:not(.dark) .auth-experience .auth-glass-card .relative.my-4 .border-t {
+  border-color: color-mix(in srgb, var(--gold) 14%, rgba(255, 255, 255, 0.12) 86%);
+}
+
+html:not(.dark) .auth-experience .auth-btn-outline {
+  border-color: color-mix(in srgb, var(--gold) 24%, rgba(255, 255, 255, 0.28) 76%);
+}
+
+html:not(.dark) .auth-experience .auth-btn-outline:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  background: color-mix(in srgb, var(--gold) 8%, rgba(255, 255, 255, 0.1) 92%);
+}
+
+/* Site dark mode — reuse global design tokens (matches homepage / marketplace) */
+html.dark .auth-experience,
+.dark .auth-experience {
+  --auth-glass: color-mix(in srgb, var(--card-surface) 72%, transparent);
+  --auth-glass-border: color-mix(in srgb, var(--gold) 18%, rgba(255, 255, 255, 0.08) 82%);
+  --auth-input-bg: color-mix(in srgb, var(--foreground) 6%, transparent);
+  --auth-hero-shadow: 0 2px 28px rgba(0, 0, 0, 0.42), 0 1px 4px rgba(0, 0, 0, 0.28);
+}
+
+html.dark .auth-experience .auth-glass-card,
+.dark .auth-experience .auth-glass-card {
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--foreground) 8%, transparent) 0%,
+    color-mix(in srgb, var(--navy) 12%, transparent) 100%
+  );
+  border-color: color-mix(in srgb, var(--gold) 12%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 6%, transparent),
+    0 28px 64px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+html.dark .auth-experience .auth-input,
+.dark .auth-experience .auth-input {
+  padding: 0.72rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  color: var(--foreground);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+html.dark .auth-experience .auth-input::placeholder,
+.dark .auth-experience .auth-input::placeholder {
+  color: color-mix(in srgb, var(--foreground-muted) 85%, transparent);
+}
+
+html.dark .auth-experience .auth-input:hover,
+.dark .auth-experience .auth-input:hover {
+  border-color: color-mix(in srgb, var(--foreground) 22%, transparent);
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+html.dark .auth-experience .auth-input:focus,
+.dark .auth-experience .auth-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 18%, transparent);
+  background: color-mix(in srgb, var(--foreground) 9%, transparent);
+}
+
+html.dark .auth-experience .auth-input--error,
+.dark .auth-experience .auth-input--error {
+  border-color: color-mix(in srgb, var(--coral) 75%, transparent);
+}
+
+html.dark .auth-experience .auth-btn-social,
+.dark .auth-experience .auth-btn-social {
+  padding: 0.68rem 0.9rem;
+  border-color: color-mix(in srgb, var(--foreground) 14%, transparent);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  color: color-mix(in srgb, var(--foreground) 94%, transparent);
+}
+
+html.dark .auth-experience .auth-btn-social:hover:not(:disabled),
+.dark .auth-experience .auth-btn-social:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--gold) 38%, rgba(255, 255, 255, 0.12) 62%);
+  background: color-mix(in srgb, var(--foreground) 9%, transparent);
+}
+
+html.dark .auth-experience .auth-glass-card label,
+.dark .auth-experience .auth-glass-card label {
+  color: color-mix(in srgb, var(--foreground) 76%, transparent);
+}
+
+html.dark .auth-experience .auth-glass-card .relative.my-4 span,
+.dark .auth-experience .auth-glass-card .relative.my-4 span {
+  color: color-mix(in srgb, var(--gold) 32%, var(--foreground-muted) 68%);
+}
+
+html.dark .auth-experience .auth-glass-card .relative.my-4 .border-t,
+.dark .auth-experience .auth-glass-card .relative.my-4 .border-t {
+  border-color: color-mix(in srgb, var(--gold) 14%, rgba(255, 255, 255, 0.1) 86%);
+}
+
+html.dark .auth-experience .auth-btn-outline,
+.dark .auth-experience .auth-btn-outline {
+  border-color: color-mix(in srgb, var(--gold) 24%, rgba(255, 255, 255, 0.2) 76%);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  color: var(--foreground);
+}
+
+html.dark .auth-experience .auth-btn-outline:hover,
+.dark .auth-experience .auth-btn-outline:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  background: color-mix(in srgb, var(--gold) 8%, rgba(255, 255, 255, 0.06) 92%);
+}
+
+html.dark .auth-experience .auth-admin-portal-btn,
+.dark .auth-experience .auth-admin-portal-btn {
+  border-color: color-mix(in srgb, var(--gold) 16%, rgba(255, 255, 255, 0.1) 84%);
+  background: color-mix(in srgb, var(--foreground) 4%, transparent);
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+}
+
+html.dark .auth-experience .auth-admin-portal-btn:hover,
+.dark .auth-experience .auth-admin-portal-btn:hover {
+  border-color: color-mix(in srgb, var(--gold) 42%, transparent);
+  color: var(--foreground);
+}
+
+html.dark .auth-split-visual--light .max-w-lg::before,
+.dark .auth-split-visual--light .max-w-lg::before {
+  border: 1px solid color-mix(in srgb, var(--gold) 18%, rgba(255, 255, 255, 0.08) 82%);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--card-surface) 88%, transparent) 0%,
+    color-mix(in srgb, var(--navy) 55%, transparent) 52%,
+    color-mix(in srgb, var(--navy-deep) 72%, transparent) 100%
+  );
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+html.dark .auth-split-visual--light h1,
+.dark .auth-split-visual--light h1 {
+  color: var(--foreground);
+  text-shadow: var(--auth-hero-shadow);
+}
+
+html.dark .auth-split-visual--light .max-w-lg > p,
+.dark .auth-split-visual--light .max-w-lg > p {
+  color: color-mix(in srgb, var(--foreground) 76%, transparent);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.38);
+}
+
+html.dark .auth-split-visual--light .auth-trust-pill,
+.dark .auth-split-visual--light .auth-trust-pill {
+  border-color: color-mix(in srgb, var(--gold) 22%, rgba(255, 255, 255, 0.1) 78%);
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  text-shadow: none;
+}
+
+/* Tablet + mobile readability */
+@media (max-width: 1023px) {
+  .auth-experience > .bg-navy > .absolute.inset-0.lg\:hidden .absolute.inset-0 {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--navy-deep-rgb), 0.94) 0%,
+      rgba(var(--navy-rgb), 0.9) 48%,
+      rgba(var(--navy-deep-rgb), 0.97) 100%
+    ) !important;
+  }
+
+  .auth-experience .auth-glass-card > h2,
+  .auth-experience .auth-glass-card > p:nth-of-type(2) {
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 640px) {
+  .auth-split-visual h1 {
+    max-width: 100%;
+  }
+
+  .auth-split-visual .max-w-lg > p:not(:first-of-type) {
+    max-width: 100%;
+  }
+
+  .auth-experience .auth-glass-card > p:nth-of-type(2) {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .auth-split-visual .max-w-lg::before {
+    inset: -0.9rem -1rem;
+  }
+
+  .auth-split-visual h1 {
+    max-width: 16ch;
+  }
+}
+
+.auth-input {
+  width: 100%;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--auth-input-bg);
+  padding: 0.9rem 1rem;
+  font-size: 0.875rem;
+  color: white;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.auth-input::placeholder {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.auth-input:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: rgba(var(--gold-rgb), 0.55);
+  box-shadow: 0 0 0 3px rgba(var(--gold-rgb), 0.18);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.auth-input--error {
+  border-color: rgba(232, 149, 122, 0.75);
+  animation: auth-shake 0.42s ease;
+}
+
+.auth-btn-primary {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  background: var(--gradient-gold);
+  box-shadow:
+    0 8px 28px rgba(var(--gold-rgb), 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.auth-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+}
+
+.auth-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow:
+    0 12px 36px rgba(var(--gold-rgb), 0.44),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  filter: brightness(1.04);
+}
+
+.auth-btn-primary:hover:not(:disabled)::before {
+  transform: translateX(120%);
+}
+
+.auth-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-btn-primary:disabled {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.auth-btn-outline {
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.55rem 1.15rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+  backdrop-filter: blur(12px);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.auth-btn-outline:hover {
+  border-color: rgba(var(--gold-rgb), 0.55);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.auth-btn-social {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.auth-btn-social:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.auth-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.auth-admin-portal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.auth-admin-portal-btn:hover {
+  border-color: rgba(var(--gold-rgb), 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.auth-mobile-sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom));
+  background: linear-gradient(
+    to top,
+    rgba(var(--navy-deep-rgb), 0.96) 0%,
+    rgba(var(--navy-deep-rgb), 0.88) 70%,
+    transparent 100%
+  );
+  backdrop-filter: blur(12px);
+}
+
+.auth-nav-dropdown {
+  min-width: 13.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: color-mix(in srgb, var(--navy) 88%, transparent);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px);
+}
+
+.auth-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.85rem 0.35rem 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: white;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.auth-nav-pill:hover,
+.auth-nav-pill[aria-expanded="true"] {
+  border-color: rgba(var(--gold-rgb), 0.45);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Admin login — inherits platform theme + admin-panel tokens */
+.admin-login-shell {
+  min-height: 100svh;
+  background-color: var(--admin-bg);
+  color: var(--admin-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.admin-login-bg {
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -15%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, color-mix(in srgb, var(--navy) 10%, transparent), transparent 55%),
+    linear-gradient(
+      180deg,
+      var(--admin-bg) 0%,
+      color-mix(in srgb, var(--admin-bg-alt) 88%, var(--navy) 12%) 100%
+    );
+}
+
+html.dark .admin-login-shell .admin-login-bg,
+.dark .admin-login-shell .admin-login-bg {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% -20%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 55%),
+    linear-gradient(180deg, var(--background) 0%, color-mix(in srgb, var(--navy-deep) 65%, var(--background) 35%) 50%, var(--background) 100%);
+}
+
+.admin-login-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--admin-text) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--admin-text) 6%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+}
+
+html.dark .admin-login-shell .admin-login-grid,
+.dark .admin-login-shell .admin-login-grid {
+  opacity: 0.35;
+}
+
+.admin-login-orb--gold {
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 42%, transparent) 0%, transparent 70%);
+}
+
+.admin-login-orb--navy {
+  background: radial-gradient(circle, color-mix(in srgb, var(--navy) 48%, transparent) 0%, transparent 70%);
+}
+
+.admin-login-orb--teal {
+  background: radial-gradient(circle, color-mix(in srgb, var(--teal) 32%, transparent) 0%, transparent 70%);
+}
+
+html.dark .admin-login-shell .admin-login-orb,
+.dark .admin-login-shell .admin-login-orb {
+  opacity: 1;
+}
+
+:not(.dark) .admin-login-shell .admin-login-orb {
+  opacity: 0.55;
+}
+
+.admin-login-card {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-surface);
+  box-shadow: var(--admin-shadow-lg);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+html.dark .admin-login-shell .admin-login-card,
+.dark .admin-login-shell .admin-login-card {
+  border-color: color-mix(in srgb, var(--gold) 14%, transparent);
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--foreground) 10%, transparent) 0%,
+    color-mix(in srgb, var(--foreground) 4%, transparent) 45%,
+    color-mix(in srgb, var(--navy) 14%, transparent) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 8%, transparent),
+    var(--shadow-editorial),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 10%, transparent);
+  backdrop-filter: blur(32px);
+}
+
+.admin-login-shield {
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--gold) 14%, transparent) 0%,
+    color-mix(in srgb, var(--navy) 18%, transparent) 100%
+  );
+  box-shadow: var(--admin-shadow-md);
+}
+
+.admin-login-input {
+  width: 100%;
+  border-radius: 0.875rem;
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-input-bg);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.875rem;
+  color: var(--admin-text);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.admin-login-input::placeholder {
+  color: var(--admin-text-subtle);
+}
+
+.admin-login-input:hover {
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--admin-border));
+}
+
+.admin-login-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.admin-login-input--error {
+  border-color: color-mix(in srgb, var(--coral) 75%, transparent);
+  animation: auth-shake 0.42s ease;
+}
+
+.admin-login-input--with-leading-icon {
+  padding-left: 2.5rem;
+}
+
+.admin-login-input--with-trailing-icon {
+  padding-right: 2.75rem;
+}
+
+html.dark .admin-login-shell .admin-login-input,
+.dark .admin-login-shell .admin-login-input {
+  border-color: color-mix(in srgb, var(--foreground) 14%, transparent);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  color: var(--foreground);
+}
+
+html.dark .admin-login-shell .admin-login-input::placeholder,
+.dark .admin-login-shell .admin-login-input::placeholder {
+  color: color-mix(in srgb, var(--foreground-muted) 85%, transparent);
+}
+
+html.dark .admin-login-shell .admin-login-input:hover,
+.dark .admin-login-shell .admin-login-input:hover {
+  border-color: color-mix(in srgb, var(--foreground) 22%, transparent);
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.admin-login-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--admin-text-muted);
+}
+
+.admin-login-remember {
+  border: 1px solid var(--admin-border-soft);
+  background-color: var(--admin-surface-muted);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.admin-login-remember:hover {
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--admin-border));
+  background-color: var(--admin-surface-subtle);
+}
+
+.admin-login-remember-text {
+  color: var(--admin-text-muted);
+}
+
+.admin-login-remember-hint {
+  color: var(--admin-text-subtle);
+}
+
+.admin-login-error {
+  border: 1px solid color-mix(in srgb, var(--coral) 35%, transparent);
+  background: color-mix(in srgb, var(--coral) 12%, transparent);
+  color: color-mix(in srgb, var(--coral) 88%, var(--admin-text));
+}
+
+html.dark .admin-login-shell .admin-login-error,
+.dark .admin-login-shell .admin-login-error {
+  color: color-mix(in srgb, var(--coral) 75%, var(--foreground));
+}
+
+.admin-login-eyebrow {
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+  color: var(--gold);
+}
+
+.admin-login-back-link {
+  color: var(--admin-text-subtle);
+  transition: color 0.25s ease;
+}
+
+.admin-login-back-link:hover {
+  color: var(--gold);
+}
+
+/* ── Admin portal login v2 — split editorial layout ── */
+.admin-portal-login {
+  min-height: 100svh;
+  background: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+.admin-portal-visual-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(6, 18, 28, 0.88) 0%,
+    rgba(15, 61, 62, 0.72) 48%,
+    rgba(6, 36, 41, 0.85) 100%
+  );
+}
+
+.admin-portal-visual-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(180deg, black 30%, transparent 95%);
+}
+
+.admin-portal-orb--gold {
+  background: radial-gradient(circle, rgba(var(--gold-rgb), 0.5) 0%, transparent 68%);
+}
+
+.admin-portal-orb--teal {
+  background: radial-gradient(circle, rgba(10, 110, 110, 0.45) 0%, transparent 70%);
+}
+
+.admin-portal-trust-pill {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.admin-portal-form-shell {
+  background: var(--admin-bg);
+}
+
+.admin-portal-form-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 100% 0%, color-mix(in srgb, var(--gold) 10%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, color-mix(in srgb, var(--navy) 8%, transparent), transparent 50%),
+    linear-gradient(180deg, var(--admin-bg) 0%, color-mix(in srgb, var(--admin-bg-alt) 90%, var(--navy) 10%) 100%);
+}
+
+html.dark .admin-portal-form-bg,
+.dark .admin-portal-form-bg {
+  background:
+    radial-gradient(ellipse 70% 45% at 100% 0%, color-mix(in srgb, var(--gold) 6%, transparent), transparent 50%),
+    linear-gradient(180deg, var(--background) 0%, color-mix(in srgb, var(--navy-deep) 40%, var(--background) 60%) 100%);
+}
+
+.admin-portal-eyebrow {
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+  color: var(--gold);
+}
+
+.admin-portal-card {
+  border: 1px solid var(--admin-border);
+  background: color-mix(in srgb, var(--admin-surface) 92%, white 8%);
+  box-shadow:
+    0 4px 6px rgba(15, 23, 42, 0.04),
+    0 24px 48px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+html.dark .admin-portal-card,
+.dark .admin-portal-card {
+  border-color: color-mix(in srgb, var(--gold) 12%, transparent);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--foreground) 8%, transparent) 0%,
+    color-mix(in srgb, var(--navy) 12%, transparent) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 6%, transparent),
+    0 28px 64px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 8%, transparent);
+}
+
+.admin-portal-shield {
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--gold) 12%, transparent) 0%,
+    color-mix(in srgb, var(--navy) 14%, transparent) 100%
+  );
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+.admin-portal-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--admin-text-muted);
+}
+
+.admin-portal-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-input-bg);
+  padding-inline: 0.875rem;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.admin-portal-input-wrap:hover {
+  border-color: color-mix(in srgb, var(--gold) 32%, var(--admin-border));
+}
+
+.admin-portal-input-wrap:focus-within {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 16%, transparent);
+}
+
+.admin-portal-input-wrap--error {
+  border-color: color-mix(in srgb, var(--coral) 75%, transparent);
+  animation: auth-shake 0.42s ease;
+}
+
+.admin-portal-input-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--admin-text-subtle);
+}
+
+.admin-portal-input {
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding-block: 0.8rem;
+  padding-inline: 0;
+  font-size: 0.875rem;
+  color: var(--admin-text);
+  outline: none;
+  box-shadow: none;
+}
+
+.admin-portal-input::placeholder {
+  color: var(--admin-text-subtle);
+}
+
+.admin-portal-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.admin-portal-input-toggle {
+  flex-shrink: 0;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  color: var(--admin-text-subtle);
+  transition: color 0.2s ease;
+}
+
+.admin-portal-input-toggle:hover {
+  color: var(--gold);
+}
+
+.admin-portal-input-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+html.dark .admin-portal-input-wrap,
+.dark .admin-portal-input-wrap {
+  border-color: color-mix(in srgb, var(--foreground) 12%, transparent);
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+html.dark .admin-portal-input,
+.dark .admin-portal-input {
+  color: var(--foreground);
+}
+
+.admin-portal-remember {
+  border: 1px solid var(--admin-border-soft);
+  background: var(--admin-surface-muted);
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.admin-portal-remember:hover {
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--admin-border));
+  background: var(--admin-surface-subtle);
+}
+
+.admin-portal-error {
+  border: 1px solid color-mix(in srgb, var(--coral) 35%, transparent);
+  background: color-mix(in srgb, var(--coral) 10%, transparent);
+  color: color-mix(in srgb, var(--coral) 88%, var(--admin-text));
+}
+
+.admin-portal-btn {
+  overflow: hidden;
+  color: var(--navy);
+  background: var(--gradient-gold);
+  border: 1px solid color-mix(in srgb, var(--gold) 40%, white);
+  box-shadow:
+    0 6px 24px rgba(var(--gold-rgb), 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition:
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.admin-portal-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.38) 48%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+}
+
+.admin-portal-btn:hover:not(:disabled)::before {
+  transform: translateX(120%);
+}
+
+.admin-portal-btn:hover:not(:disabled) {
+  box-shadow:
+    0 10px 32px rgba(var(--gold-rgb), 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  filter: brightness(1.03);
+}
+
+.admin-portal-back {
+  color: var(--admin-text-subtle);
+}
+
+.admin-portal-back:hover {
+  color: var(--gold);
+}
+
+/* Admin enterprise login */
+.admin-auth-shell {
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(var(--gold-rgb), 0.08), transparent),
+    linear-gradient(180deg, #0a1218 0%, #0d1520 40%, #0a0f14 100%);
+}
+
+/* ── Enterprise admin login (Stripe-grade) ── */
+.admin-enterprise-shell {
+  min-height: 100svh;
+  background: linear-gradient(165deg, #030508 0%, #0a1218 35%, #0c3238 100%);
+  color: white;
+}
+
+.admin-enterprise-bg {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% -20%, rgba(var(--gold-rgb), 0.06), transparent 55%),
+    linear-gradient(180deg, #040608 0%, #0a1018 50%, #050a0e 100%);
+}
+
+.admin-enterprise-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+}
+
+.admin-enterprise-orb--gold {
+  background: radial-gradient(circle, rgba(var(--gold-rgb), 0.45) 0%, transparent 70%);
+}
+
+.admin-enterprise-orb--navy {
+  background: radial-gradient(circle, rgba(15, 61, 62, 0.55) 0%, transparent 70%);
+}
+
+.admin-enterprise-orb--teal {
+  background: radial-gradient(circle, rgba(10, 110, 110, 0.35) 0%, transparent 70%);
+}
+
+.admin-enterprise-card {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(15, 61, 62, 0.08) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(var(--gold-rgb), 0.06),
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(32px);
+}
+
+.admin-enterprise-shield {
+  border: 1px solid rgba(var(--gold-rgb), 0.22);
+  background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.12) 0%, rgba(15, 61, 62, 0.2) 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.admin-enterprise-btn {
+  color: #062429;
+  background: var(--gradient-gold);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 4px 20px rgba(var(--gold-rgb), 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition:
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.admin-enterprise-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 48%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+}
+
+.admin-enterprise-btn:hover:not(:disabled)::before {
+  transform: translateX(120%);
+}
+
+.admin-enterprise-btn:hover:not(:disabled) {
+  box-shadow:
+    0 8px 32px rgba(var(--gold-rgb), 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  filter: brightness(1.04);
+}
+
+.admin-enterprise-btn:disabled {
+  filter: grayscale(0.15);
+}
+
+.admin-auth-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px);
+}
+
+.admin-auth-input {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.92);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-auth-input::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.admin-auth-input:focus {
+  outline: none;
+  border-color: rgba(var(--gold-rgb), 0.45);
+  box-shadow: 0 0 0 3px rgba(var(--gold-rgb), 0.12);
+}
+
+.admin-auth-btn {
+  width: 100%;
+  border-radius: 0.625rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #1a3a4a 0%, #0c3238 50%, #062429 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.admin-auth-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  filter: brightness(1.06);
+}
+
+.admin-dashboard-loading {
+  min-height: 100svh;
+  background: linear-gradient(180deg, #0a1218 0%, #0d1520 100%);
+}
+
+@keyframes auth-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+@keyframes auth-pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.6;
+  }
+}
+
+.auth-success-check {
+  animation: auth-pulse-ring 0.6s ease;
+}

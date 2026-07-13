@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-16T09:59:51.837Z",
+  "license": "Pexels License (free commercial use)",
+  "optimization": {
+    "targetResolution": "1920x1080 max",
+    "codec": "source HD (no ffmpeg — install ffmpeg for re-encode)",
+    "audio": "removed (hero is muted)",
+    "posterFormat": "jpeg preview from Pexels"
+  },
+  "videos": [
+    {
+      "id": "fiji-01",
+      "file": "fiji-01.mp4",
+      "poster": "posters/fiji-01.jpg",
+      "src": "/assets/hero-videos/fiji-01.mp4",
+      "posterSrc": "/assets/hero-videos/posters/fiji-01.jpg",
+      "title": "Overwater luxury resort",
+      "theme": "Cinematic aerial — overwater villas & turquoise lagoon",
+      "category": "Luxury Resorts · Fiji Islands",
+      "sourcePage": "https://www.pexels.com/video/aerial-view-of-beautiful-resort-2169880/",
+      "pexelsId": 2169880,
+      "bytes": 61016320,
+      "license": "Pexels License — https://www.pexels.com/license/"
+    },
+    {
+      "id": "fiji-02",
+      "file": "fiji-02.mp4",
+      "poster": "posters/fiji-02.jpg",
+      "src": "/assets/hero-videos/fiji-02.mp4",
+      "posterSrc": "/assets/hero-videos/posters/fiji-02.jpg",
+      "title": "Premium island resort",
+      "theme": "Sweeping drone over luxury beachfront & emerald water",
+      "category": "Luxury Travel · Drone Footage",
+      "sourcePage": "https://www.pexels.com/video/5127021/",
+      "pexelsId": 5127021,
+      "bytes": 88845832,
+      "license": "Pexels License — https://www.pexels.com/license/"
+    },
+    {
+      "id": "fiji-03",
+      "file": "fiji-03.mp4",
+      "poster": "posters/fiji-03.jpg",
+      "src": "/assets/hero-videos/fiji-03.mp4",
+      "posterSrc": "/assets/hero-videos/posters/fiji-03.jpg",
+      "title": "Beachfront luxury escape",
+      "theme": "Aerial resort pools meeting deep Pacific blue",
+      "category": "Luxury Resorts · Ocean Views",
+      "sourcePage": "https://www.pexels.com/video/aerial-view-of-a-resort-hotel-by-the-beach-9503163/",
+      "pexelsId": 9503163,
+      "bytes": 51238135,
+      "license": "Pexels License — https://www.pexels.com/license/"
+    },
+    {
+      "id": "fiji-04",
+      "file": "fiji-04.mp4",
+      "poster": "posters/fiji-04.jpg",
+      "src": "/assets/hero-videos/fiji-04.mp4",
+      "posterSrc": "/assets/hero-videos/posters/fiji-04.jpg",
+      "title": "Golden tropical coast",
+      "theme": "Warm golden light on sand & teal shallows",
+      "category": "Fiji Beaches · Luxury Travel",
+      "sourcePage": "https://www.pexels.com/video/3571264/",
+      "pexelsId": 3571264,
+      "bytes": 12645253,
+      "license": "Pexels License — https://www.pexels.com/license/"
+    },
+    {
+      "id": "fiji-05",
+      "file": "fiji-05.mp4",
+      "poster": "posters/fiji-05.jpg",
+      "src": "/assets/hero-videos/fiji-05.mp4",
+      "posterSrc": "/assets/hero-videos/posters/fiji-05.jpg",
+      "title": "Emerald lagoon islands",
+      "theme": "Volcanic green islands rising from crystal lagoon",
+      "category": "Tropical Islands · Ocean Views",
+      "sourcePage": "https://www.pexels.com/video/7671125/",
+      "pexelsId": 7671125,
+      "bytes": 13690926,
+      "license": "Pexels License — https://www.pexels.com/license/"
+    }
+  ]
+}

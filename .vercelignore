@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+data/local-admin.json
+data/local-supplier.json
+.audit-tmp/
+.cursor-admin-verify.cjs

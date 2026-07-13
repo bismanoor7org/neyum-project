@@ -1,0 +1,426 @@
+/* Admin panel — light + dark theme tokens */
+.admin-panel {
+  --admin-bg: #ffffff;
+  --admin-bg-alt: #fafaf8;
+  --admin-surface: #ffffff;
+  --admin-surface-muted: #faf9f7;
+  --admin-surface-subtle: #f1efe9;
+  --admin-border: #e8e4de;
+  --admin-border-soft: #f1efe9;
+  --admin-border-strong: #e2e8e8;
+  --admin-text: var(--navy);
+  --admin-text-muted: #64748b;
+  --admin-text-subtle: #94a3b8;
+  --admin-shadow: 0 1px 3px rgba(8, 43, 75, 0.04);
+  --admin-shadow-md: 0 2px 12px rgba(var(--navy-rgb), 0.04);
+  --admin-shadow-lg: 0 8px 30px rgba(8, 43, 75, 0.08);
+  --admin-chart-grid: #e8e4de;
+  --admin-progress-track: #f1efe9;
+  --admin-input-bg: #ffffff;
+  --admin-mobile-header-bg: rgba(255, 255, 255, 0.92);
+  --admin-explore-bg: var(--navy);
+  --admin-explore-surface: rgba(255, 255, 255, 0.06);
+  --admin-explore-surface-hover: rgba(255, 255, 255, 0.1);
+  --admin-explore-border: rgba(255, 255, 255, 0.12);
+  --admin-explore-text: #ffffff;
+  --admin-explore-text-muted: rgba(255, 255, 255, 0.55);
+  --admin-explore-text-subtle: rgba(255, 255, 255, 0.4);
+  color: var(--admin-text);
+}
+
+html.dark .admin-panel,
+.dark .admin-panel {
+  --admin-bg: var(--background);
+  --admin-bg-alt: var(--background);
+  --admin-surface: var(--card-elevated);
+  --admin-surface-muted: var(--card-surface);
+  --admin-surface-subtle: color-mix(in srgb, var(--foreground) 8%, transparent);
+  --admin-border: var(--border);
+  --admin-border-soft: rgba(255, 255, 255, 0.06);
+  --admin-border-strong: rgba(255, 255, 255, 0.1);
+  --admin-text: var(--foreground);
+  --admin-text-muted: var(--foreground-muted);
+  --admin-text-subtle: color-mix(in srgb, var(--foreground-muted) 72%, var(--background));
+  --admin-shadow: var(--shadow-card);
+  --admin-shadow-md: var(--shadow-card);
+  --admin-shadow-lg: var(--shadow-editorial);
+  --admin-chart-grid: color-mix(in srgb, var(--foreground) 14%, transparent);
+  --admin-progress-track: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --admin-input-bg: var(--card-surface);
+  --admin-mobile-header-bg: color-mix(in srgb, var(--card-elevated) 94%, transparent);
+  --admin-explore-bg: var(--background);
+  --admin-explore-surface: color-mix(in srgb, var(--card-elevated) 88%, var(--navy) 12%);
+  --admin-explore-surface-hover: color-mix(in srgb, var(--card-elevated) 72%, var(--navy) 28%);
+  --admin-explore-border: rgba(255, 255, 255, 0.08);
+  --admin-explore-text: var(--foreground);
+  --admin-explore-text-muted: color-mix(in srgb, var(--foreground) 68%, transparent);
+  --admin-explore-text-subtle: color-mix(in srgb, var(--foreground) 48%, transparent);
+  color: var(--admin-text);
+}
+
+/* Layout */
+.admin-panel .admin-shell-bg {
+  background-color: var(--admin-bg);
+}
+
+.admin-panel .admin-mobile-header {
+  border-color: var(--admin-border-strong);
+  background-color: var(--admin-mobile-header-bg);
+}
+
+/* Surfaces */
+.admin-panel .admin-card {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-surface);
+  box-shadow: var(--admin-shadow);
+}
+
+.admin-panel .admin-card-md {
+  border: 1px solid var(--admin-border-strong);
+  background-color: var(--admin-surface);
+  box-shadow: var(--admin-shadow-md);
+}
+
+.admin-panel .admin-card-lg {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-surface);
+  box-shadow: var(--admin-shadow-lg);
+}
+
+.admin-panel .admin-surface-muted {
+  background-color: var(--admin-surface-muted);
+}
+
+.admin-panel .admin-surface-subtle {
+  background-color: var(--admin-surface-subtle);
+}
+
+/* Typography */
+.admin-panel .admin-text {
+  color: var(--admin-text);
+}
+
+.admin-panel .admin-text-muted {
+  color: var(--admin-text-muted);
+}
+
+.admin-panel .admin-text-subtle {
+  color: var(--admin-text-subtle);
+}
+
+/* Legacy utility compatibility inside admin pages */
+.admin-panel .text-\[\#64748b\] {
+  color: var(--admin-text-muted);
+}
+
+.admin-panel .text-\[\#94a3b8\] {
+  color: var(--admin-text-subtle);
+}
+
+.admin-panel .border-\[\#e8e4de\] {
+  border-color: var(--admin-border);
+}
+
+/* Forms */
+.admin-panel .admin-input,
+.admin-panel .admin-select {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-input-bg);
+  color: var(--admin-text);
+}
+
+.admin-panel .admin-input::placeholder {
+  color: var(--admin-text-subtle);
+}
+
+.admin-panel .admin-input:focus,
+.admin-panel .admin-select:focus {
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.admin-panel .admin-search-icon {
+  color: var(--admin-text-subtle);
+}
+
+/* Tables */
+.admin-panel .admin-table-head {
+  border-bottom: 1px solid var(--admin-border);
+  background-color: var(--admin-surface-muted);
+  color: var(--admin-text-muted);
+}
+
+.admin-panel .admin-table-cell {
+  border-bottom: 1px solid var(--admin-border-soft);
+  color: var(--admin-text);
+}
+
+.admin-panel .admin-table-row:hover {
+  background-color: color-mix(in srgb, var(--admin-surface-muted) 80%, transparent);
+}
+
+/* Buttons */
+.admin-panel .admin-btn-secondary {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-surface);
+  color: var(--admin-text);
+}
+
+.admin-panel .admin-btn-secondary:hover {
+  background-color: var(--admin-surface-muted);
+}
+
+.admin-panel .admin-btn-ghost {
+  color: var(--admin-text-muted);
+}
+
+.admin-panel .admin-btn-ghost:hover {
+  background-color: var(--admin-surface-subtle);
+  color: var(--admin-text);
+}
+
+/* Chips & pills */
+.admin-panel .admin-chip {
+  background-color: var(--admin-surface-subtle);
+  color: var(--admin-text-muted);
+}
+
+.admin-panel .admin-stat-pill {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-surface-muted);
+}
+
+.admin-panel .admin-progress-track {
+  background-color: var(--admin-progress-track);
+}
+
+/* Settings nav */
+.admin-panel .admin-tab {
+  color: var(--admin-text-muted);
+}
+
+.admin-panel .admin-tab:hover {
+  background-color: var(--admin-surface);
+  color: var(--admin-text);
+}
+
+.admin-panel .admin-tab-active {
+  background-color: var(--navy);
+  color: #ffffff;
+}
+
+html.dark .admin-panel .admin-tab-active,
+.dark .admin-panel .admin-tab-active {
+  background-color: color-mix(in srgb, var(--navy) 82%, var(--gold) 8%);
+  color: var(--foreground);
+}
+
+/* Notifications */
+.admin-panel .admin-notice-read {
+  border: 1px solid var(--admin-border);
+  background-color: var(--admin-surface);
+}
+
+.admin-panel .admin-notice-unread {
+  border: 1px solid color-mix(in srgb, var(--gold) 28%, transparent);
+  background-color: color-mix(in srgb, var(--gold) 6%, var(--admin-surface));
+}
+
+/* Explore world section */
+.admin-panel .admin-explore-card {
+  border: 1px solid var(--admin-explore-border);
+  background-color: var(--admin-explore-bg);
+  color: var(--admin-explore-text);
+}
+
+.admin-panel .admin-explore-surface {
+  border: 1px solid var(--admin-explore-border);
+  background-color: var(--admin-explore-surface);
+  color: var(--admin-explore-text);
+}
+
+.admin-panel .admin-explore-row {
+  border: 1px solid color-mix(in srgb, var(--admin-explore-border) 70%, transparent);
+  background-color: color-mix(in srgb, var(--admin-explore-surface) 90%, transparent);
+  color: color-mix(in srgb, var(--admin-explore-text) 88%, transparent);
+}
+
+.admin-panel .admin-explore-row:hover {
+  background-color: var(--admin-explore-surface-hover);
+}
+
+.admin-panel .admin-explore-text-muted {
+  color: var(--admin-explore-text-muted);
+}
+
+.admin-panel .admin-explore-text-subtle {
+  color: var(--admin-explore-text-subtle);
+}
+
+.admin-panel .admin-explore-table-head {
+  border-bottom: 1px solid var(--admin-explore-border);
+  color: var(--admin-explore-text-subtle);
+}
+
+.admin-panel .admin-explore-table-row {
+  border-bottom: 1px solid color-mix(in srgb, var(--admin-explore-border) 40%, transparent);
+  color: color-mix(in srgb, var(--admin-explore-text) 86%, transparent);
+}
+
+/* Charts */
+.admin-panel .admin-chart-grid {
+  stroke: var(--admin-chart-grid);
+}
+
+/* Status badges — dark mode readability */
+html.dark .admin-panel .bg-amber-50,
+.dark .admin-panel .bg-amber-50 {
+  background-color: color-mix(in srgb, #f59e0b 18%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-emerald-50,
+.dark .admin-panel .bg-emerald-50 {
+  background-color: color-mix(in srgb, #10b981 16%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-blue-50,
+.dark .admin-panel .bg-blue-50 {
+  background-color: color-mix(in srgb, #3b82f6 16%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-red-50,
+.dark .admin-panel .bg-red-50 {
+  background-color: color-mix(in srgb, #ef4444 14%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-purple-50,
+.dark .admin-panel .bg-purple-50 {
+  background-color: color-mix(in srgb, #a855f7 14%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-orange-50,
+.dark .admin-panel .bg-orange-50 {
+  background-color: color-mix(in srgb, #f97316 14%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-violet-50,
+.dark .admin-panel .bg-violet-50 {
+  background-color: color-mix(in srgb, #8b5cf6 14%, var(--card-surface));
+}
+
+html.dark .admin-panel .bg-slate-100,
+.dark .admin-panel .bg-slate-100 {
+  background-color: color-mix(in srgb, var(--foreground) 10%, var(--card-surface));
+}
+
+html.dark .admin-panel .text-amber-700,
+.dark .admin-panel .text-amber-700 {
+  color: #fbbf24;
+}
+
+html.dark .admin-panel .text-emerald-700,
+html.dark .admin-panel .text-emerald-600,
+.dark .admin-panel .text-emerald-700,
+.dark .admin-panel .text-emerald-600 {
+  color: #34d399;
+}
+
+html.dark .admin-panel .text-blue-700,
+html.dark .admin-panel .text-blue-600,
+.dark .admin-panel .text-blue-700,
+.dark .admin-panel .text-blue-600 {
+  color: #60a5fa;
+}
+
+html.dark .admin-panel .text-red-700,
+html.dark .admin-panel .text-red-600,
+.dark .admin-panel .text-red-700,
+.dark .admin-panel .text-red-600 {
+  color: #f87171;
+}
+
+html.dark .admin-panel .text-purple-700,
+.dark .admin-panel .text-purple-700 {
+  color: #c084fc;
+}
+
+html.dark .admin-panel .text-orange-700,
+.dark .admin-panel .text-orange-700 {
+  color: #fb923c;
+}
+
+html.dark .admin-panel .text-violet-700,
+.dark .admin-panel .text-violet-700 {
+  color: #a78bfa;
+}
+
+html.dark .admin-panel .text-slate-700,
+html.dark .admin-panel .text-slate-600,
+.dark .admin-panel .text-slate-700,
+.dark .admin-panel .text-slate-600 {
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+}
+
+html.dark .admin-panel .text-\[\#8b6914\],
+.dark .admin-panel .text-\[\#8b6914\] {
+  color: var(--gold);
+}
+
+.admin-panel tbody tr:hover {
+  background-color: color-mix(in srgb, var(--admin-surface-muted) 82%, transparent);
+}
+
+/* Misc visibility fixes */
+html.dark .admin-panel .divide-\[\#f1efe9\] > :not([hidden]) ~ :not([hidden]),
+.dark .admin-panel .divide-\[\#f1efe9\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--admin-border-soft);
+}
+
+html.dark .admin-panel .bg-gold\/5,
+.dark .admin-panel .bg-gold\/5 {
+  background-color: color-mix(in srgb, var(--gold) 8%, var(--admin-surface));
+}
+
+html.dark .admin-panel .bg-gold\/\[0\.04\],
+.dark .admin-panel .bg-gold\/\[0\.04\] {
+  background-color: color-mix(in srgb, var(--gold) 8%, var(--admin-surface));
+}
+
+html.dark .admin-panel .bg-navy\/10,
+.dark .admin-panel .bg-navy\/10 {
+  background-color: color-mix(in srgb, var(--navy) 28%, var(--card-surface));
+}
+
+html.dark .admin-panel .border-dashed.border-foreground\/15,
+.dark .admin-panel .border-dashed.border-foreground\/15 {
+  border-color: var(--admin-border);
+  background-color: var(--admin-surface);
+}
+
+html.dark .admin-panel .border-foreground\/8,
+.dark .admin-panel .border-foreground\/8 {
+  border-color: var(--admin-border);
+}
+
+html.dark .admin-panel .text-foreground\/60,
+html.dark .admin-panel .text-foreground\/55,
+html.dark .admin-panel .text-foreground\/75,
+html.dark .admin-panel .text-foreground\/40,
+.dark .admin-panel .text-foreground\/60,
+.dark .admin-panel .text-foreground\/55,
+.dark .admin-panel .text-foreground\/75,
+.dark .admin-panel .text-foreground\/40 {
+  color: var(--admin-text-muted);
+}
+
+html.dark .admin-panel .text-navy\/70,
+.dark .admin-panel .text-navy\/70 {
+  color: var(--admin-text-muted);
+}
+
+html.dark .admin-panel select option,
+.dark .admin-panel select option {
+  background-color: var(--card-surface);
+  color: var(--foreground);
+}

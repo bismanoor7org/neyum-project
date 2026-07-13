@@ -1,0 +1,671 @@
+/* ── Currency Converter — luxury concierge exchange UI ── */
+
+.cc-layout {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .cc-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+}
+
+/* ── Shared glass panels ── */
+
+.cc-converter {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.cc-converter,
+.cc-insights {
+  position: relative;
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.25rem);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--white) 92%, transparent) 0%,
+    color-mix(in srgb, var(--cream-dark) 14%, var(--card-surface)) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.cc-converter::before,
+.cc-insights::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--gold-rgb), 0.45) 20%,
+    rgba(var(--gold-rgb), 0.65) 50%,
+    rgba(var(--gold-rgb), 0.45) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Converter card ── */
+
+.cc-converter-header {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+}
+
+.cc-converter-title {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.625rem, 3vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.cc-converter-subtitle {
+  margin-top: 0.5rem;
+  max-width: 28rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--foreground) 56%, transparent);
+}
+
+.cc-converter-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.cc-field-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 46%, transparent);
+}
+
+/* Large amount input */
+.cc-amount-field {
+  display: block;
+}
+
+.cc-amount-input {
+  width: 100%;
+  margin-top: 0.625rem;
+  border: none;
+  border-bottom: 2px solid color-mix(in srgb, var(--border) 80%, var(--gold) 8%);
+  background: transparent;
+  padding: 0.5rem 0 0.75rem;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  transition:
+    border-color 0.3s ease,
+    color 0.25s ease;
+}
+
+.cc-amount-input:hover {
+  border-color: color-mix(in srgb, var(--gold) 35%, var(--border));
+}
+
+.cc-amount-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--gold) 60%, var(--border));
+}
+
+.cc-amount-input::-webkit-outer-spin-button,
+.cc-amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cc-amount-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Currency selectors + swap */
+.cc-currency-stack {
+  display: grid;
+  gap: 0.875rem;
+  align-items: end;
+}
+
+@media (min-width: 640px) {
+  .cc-currency-stack {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+  }
+}
+
+.cc-currency-field {
+  display: block;
+}
+
+.cc-currency-select {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  background: color-mix(in srgb, var(--white) 94%, var(--cream-dark) 6%);
+  padding: 0.9375rem 2.75rem 0.9375rem 1.125rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  box-shadow:
+    0 2px 8px rgba(var(--navy-deep-rgb), 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.cc-currency-select:hover {
+  border-color: color-mix(in srgb, var(--gold) 32%, var(--border));
+  transform: translateY(-1px);
+}
+
+.cc-currency-select:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--border));
+  box-shadow:
+    0 0 0 3px rgba(var(--gold-rgb), 0.12),
+    0 2px 8px rgba(var(--navy-deep-rgb), 0.04);
+}
+
+.cc-swap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-inline: auto;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--gold) 38%, var(--border));
+  background: linear-gradient(
+    145deg,
+    rgba(var(--gold-rgb), 0.1) 0%,
+    rgba(var(--gold-rgb), 0.03) 100%
+  );
+  color: var(--gold-deep);
+  box-shadow:
+    0 4px 16px rgba(var(--navy-deep-rgb), 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  transition:
+    transform 0.42s cubic-bezier(0.34, 1.2, 0.64, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.cc-swap:hover {
+  border-color: color-mix(in srgb, var(--gold) 58%, var(--border));
+  background: linear-gradient(
+    145deg,
+    rgba(var(--gold-rgb), 0.16) 0%,
+    rgba(var(--gold-rgb), 0.06) 100%
+  );
+  box-shadow:
+    0 6px 20px rgba(var(--gold-rgb), 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.cc-swap--active {
+  transform: rotate(180deg);
+}
+
+.cc-swap:active {
+  transform: scale(0.96);
+}
+
+.cc-swap--active:active {
+  transform: rotate(180deg) scale(0.96);
+}
+
+.cc-refresh-btn {
+  align-self: flex-start;
+  min-width: 9.5rem;
+  box-shadow:
+    0 4px 16px rgba(var(--gold-rgb), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+.cc-refresh-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 24px rgba(var(--gold-rgb), 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.cc-error {
+  font-size: 0.875rem;
+  color: var(--coral);
+}
+
+/* Conversion summary */
+.cc-result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding: 1.25rem 1.125rem;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  background: color-mix(in srgb, var(--white) 90%, var(--cream-dark) 10%);
+}
+
+.cc-result-heading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 44%, transparent);
+}
+
+.cc-result-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin: 0;
+}
+
+.cc-result-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cc-result-row dt {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--foreground) 52%, transparent);
+}
+
+.cc-result-row dd {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.cc-result-note {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--foreground) 58%, transparent);
+}
+
+/* ── Insights card ── */
+
+.cc-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.cc-insights-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+}
+
+.cc-insights-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, var(--border));
+  background: linear-gradient(
+    145deg,
+    rgba(var(--gold-rgb), 0.12) 0%,
+    rgba(var(--gold-rgb), 0.03) 100%
+  );
+  color: var(--gold-deep);
+}
+
+.cc-insights-title {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.375rem, 2.5vw, 1.625rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.cc-insight-stats {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cc-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.125rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  background: color-mix(in srgb, var(--white) 88%, var(--cream-dark) 12%);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cc-stat:hover {
+  border-color: color-mix(in srgb, var(--gold) 22%, var(--border));
+  box-shadow: 0 4px 14px rgba(var(--navy-deep-rgb), 0.05);
+}
+
+.cc-stat-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 44%, transparent);
+}
+
+.cc-stat-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.cc-stat-value--rate {
+  font-size: 1.0625rem;
+  letter-spacing: 0.01em;
+}
+
+.cc-stat-value--muted {
+  font-weight: 500;
+  color: color-mix(in srgb, var(--gold-deep) 80%, var(--navy));
+}
+
+.cc-stat-value--meta {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--foreground) 58%, transparent);
+}
+
+.cc-insights-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.cc-section-heading {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 44%, transparent);
+}
+
+/* Popular conversions */
+.cc-conversions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cc-conversion-item {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.8125rem 1rem;
+  border-radius: 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: var(--white);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease,
+    background 0.22s ease;
+}
+
+.cc-conversion-item:hover {
+  border-color: color-mix(in srgb, var(--gold) 32%, var(--border));
+  background: color-mix(in srgb, var(--champagne) 35%, var(--white));
+  box-shadow: 0 4px 14px rgba(var(--navy-deep-rgb), 0.06);
+  transform: translateY(-1px);
+}
+
+.cc-conversion-pair {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
+}
+
+.cc-conversion-arrow {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--gold) 70%, var(--navy));
+}
+
+.cc-conversion-result {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Premium currency pills */
+.cc-currency-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cc-currency-pill {
+  min-width: 3.25rem;
+  padding: 0.5625rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  background: var(--white);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+  cursor: pointer;
+  transition:
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease,
+    color 0.22s ease;
+}
+
+.cc-currency-pill:hover {
+  border-color: color-mix(in srgb, var(--gold) 40%, var(--border));
+  box-shadow: 0 4px 12px rgba(var(--navy-deep-rgb), 0.06);
+  transform: translateY(-1px);
+}
+
+.cc-currency-pill--from {
+  border-color: color-mix(in srgb, var(--navy) 25%, var(--border));
+  background: color-mix(in srgb, var(--navy) 8%, var(--white));
+}
+
+.cc-currency-pill--to {
+  border-color: color-mix(in srgb, var(--gold) 50%, var(--border));
+  background: linear-gradient(
+    145deg,
+    rgba(var(--gold-rgb), 0.14) 0%,
+    rgba(var(--gold-rgb), 0.04) 100%
+  );
+  color: var(--gold-deep);
+  box-shadow: 0 2px 10px rgba(var(--gold-rgb), 0.12);
+}
+
+.cc-currency-pill--from.cc-currency-pill--to {
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--navy) 15%);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--navy) 10%, var(--white)) 0%,
+    rgba(var(--gold-rgb), 0.12) 100%
+  );
+}
+
+/* Rate highlights */
+.cc-rate-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (min-width: 1280px) {
+  .cc-rate-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.cc-rate-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6875rem 0.875rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  background: color-mix(in srgb, var(--white) 92%, var(--cream-dark) 8%);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cc-rate-highlight:hover {
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--border));
+  box-shadow: 0 3px 10px rgba(var(--navy-deep-rgb), 0.05);
+}
+
+.cc-rate-highlight-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+}
+
+.cc-rate-highlight-value {
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--foreground) 58%, transparent);
+}
+
+/* ── Dark mode ── */
+
+html.dark .cc-converter,
+.dark .cc-converter,
+html.dark .cc-insights,
+.dark .cc-insights {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--card-surface) 96%, transparent) 0%,
+    color-mix(in srgb, var(--navy-deep) 28%, var(--card-surface)) 100%
+  );
+  box-shadow:
+    var(--shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+html.dark .cc-amount-input,
+.dark .cc-amount-input {
+  color: var(--foreground);
+  border-bottom-color: color-mix(in srgb, var(--border) 70%, var(--gold) 12%);
+}
+
+html.dark .cc-currency-select,
+.dark .cc-currency-select {
+  background: color-mix(in srgb, var(--card-surface) 94%, var(--navy-deep) 6%);
+  border-color: color-mix(in srgb, var(--border) 65%, transparent);
+  color: var(--foreground);
+}
+
+html.dark .cc-result-details,
+.dark .cc-result-details {
+  background: color-mix(in srgb, var(--card-surface) 92%, var(--navy-deep) 8%);
+  border-color: color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+html.dark .cc-result-row dd,
+.dark .cc-result-row dd {
+  color: var(--foreground);
+}
+
+html.dark .cc-stat,
+.dark .cc-stat {
+  background: color-mix(in srgb, var(--card-surface) 92%, var(--navy-deep) 8%);
+  border-color: color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+html.dark .cc-conversion-item,
+.dark .cc-conversion-item {
+  background: color-mix(in srgb, var(--card-surface) 94%, var(--navy-deep) 6%);
+  border-color: color-mix(in srgb, var(--border) 55%, transparent);
+}
+
+html.dark .cc-conversion-item:hover,
+.dark .cc-conversion-item:hover {
+  background: color-mix(in srgb, var(--navy) 88%, var(--gold) 4%);
+}
+
+html.dark .cc-currency-pill,
+.dark .cc-currency-pill {
+  background: color-mix(in srgb, var(--card-surface) 94%, var(--navy-deep) 6%);
+  border-color: color-mix(in srgb, var(--border) 55%, transparent);
+  color: var(--foreground);
+}
+
+html.dark .cc-currency-pill--from,
+.dark .cc-currency-pill--from {
+  background: color-mix(in srgb, var(--navy) 75%, var(--card-surface));
+}
+
+html.dark .cc-rate-highlight,
+.dark .cc-rate-highlight {
+  background: color-mix(in srgb, var(--card-surface) 92%, var(--navy-deep) 8%);
+  border-color: color-mix(in srgb, var(--border) 55%, transparent);
+}

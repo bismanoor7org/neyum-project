@@ -1,0 +1,1330 @@
+[
+  {
+    "name": "Coral Coast",
+    "slug": "coral-coast",
+    "tagline": "Golden beaches & authentic Fijian culture",
+    "description": "The Coral Coast stretches along Viti Levu's southern shore — a ribbon of palm-fringed beaches, luxury resorts and traditional villages where fire-walking ceremonies and kava rituals still shape daily life.",
+    "excerpt": "The Coral Coast stretches along Viti Levu's southern shore — a ribbon of palm-fringed beaches, luxury resorts and traditional villages where fire-walking ceremonies and kava rituals still shape daily life.",
+    "heroImage": "https://images.unsplash.com/photo-1718152218900-339319bfe82e?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1731317736162-0d067d4ba549?w=1400&q=90&auto=format"
+    ],
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 1,
+    "content": {
+      "region": "mainland",
+      "cardImage": "https://images.unsplash.com/photo-1731317736162-0d067d4ba549?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Sigatoka Sand Dunes",
+        "Village ceremonies",
+        "Luxury beach resorts"
+      ],
+      "thingsToDo": [
+        "Village tours",
+        "River safaris",
+        "Golf at championship courses",
+        "Spa retreats"
+      ],
+      "placesToStay": [
+        "InterContinental Fiji",
+        "Outrigger Fiji Beach Resort",
+        "Private beach villas"
+      ],
+      "tours": [
+        "Cultural immersion day",
+        "Coastal helicopter flight",
+        "Sunset dhow cruise"
+      ],
+      "beaches": [
+        "Natadola Beach",
+        "Maui Bay",
+        "Korolevu coastline"
+      ],
+      "dining": [
+        "Beachfront fine dining",
+        "Lovo feasts",
+        "Resort tasting menus"
+      ],
+      "transport": [
+        "Nadi airport 1hr",
+        "Private resort transfers",
+        "Scenic coastal drive"
+      ],
+      "culture": [
+        "Meke performances",
+        "Pottery villages",
+        "Traditional craft markets"
+      ],
+      "weather": "Warm year-round. Dry season May–Oct (26–30°C). Wet season Nov–Apr with afternoon showers.",
+      "bestTimeToVisit": "Warm year-round. Dry season May–Oct (26–30°C). Wet season Nov–Apr with afternoon showers.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit the Coral Coast?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to the Coral Coast?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "pacific-harbour",
+        "denarau",
+        "suva"
+      ]
+    },
+    "highlights": [
+      "Sigatoka Sand Dunes",
+      "Village ceremonies",
+      "Luxury beach resorts"
+    ],
+    "latitude": -18.1416,
+    "longitude": 177.5069,
+    "id": "821ecbed-2d67-4083-ba6a-0a89595b1182",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Nadi",
+    "slug": "nadi",
+    "tagline": "Gateway to the Fiji Islands",
+    "description": "Nadi is your arrival point into paradise — a vibrant hub connecting international travellers to the Mamanuca and Yasawa islands, Denarau Marina and Fiji's highland interior.",
+    "excerpt": "Nadi is your arrival point into paradise — a vibrant hub connecting international travellers to the Mamanuca and Yasawa islands, Denarau Marina and Fiji's highland interior.",
+    "heroImage": "https://images.unsplash.com/photo-1679966520098-f16132db6f22?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1730946450226-d15e3bca7877?w=1400&q=90&auto=format"
+    ],
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 2,
+    "content": {
+      "region": "mainland",
+      "cardImage": "https://images.unsplash.com/photo-1730946450226-d15e3bca7877?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Sri Siva Subramaniya Temple",
+        "Garden of the Sleeping Giant",
+        "Denarau Marina"
+      ],
+      "thingsToDo": [
+        "Island day trips",
+        "Temple visits",
+        "Market tours",
+        "Golf"
+      ],
+      "placesToStay": [
+        "Denarau resorts",
+        "Boutique Nadi hotels",
+        "Airport transit lodges"
+      ],
+      "tours": [
+        "Mamanuca day cruise",
+        "Sabeto mud pool & hot springs",
+        "Highland village tour"
+      ],
+      "beaches": [
+        "Denarau Beach",
+        "Wailoaloa Beach"
+      ],
+      "dining": [
+        "Indian-Fijian fusion",
+        "Resort restaurants",
+        "Local market produce"
+      ],
+      "transport": [
+        "Nadi International Airport",
+        "Denarau ferry terminal",
+        "Helicopter transfers"
+      ],
+      "culture": [
+        "Hindu temple architecture",
+        "Multicultural markets",
+        "Fijian craft centres"
+      ],
+      "weather": "Tropical and humid. Best visibility for island hops May–Oct.",
+      "bestTimeToVisit": "Tropical and humid. Best visibility for island hops May–Oct.",
+      "travelTips": [
+        "Pre-book airport transfers — especially for late-night arrivals",
+        "Allow a half-day for Sabeto mud pools and Sleeping Giant gardens",
+        "Denarau Marina ferries run on a schedule — confirm island departure times",
+        "Carry FJD cash for Nadi market stalls and village gifts"
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Nadi?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Nadi?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "denarau",
+        "mamanuca",
+        "yasawa"
+      ]
+    },
+    "highlights": [
+      "Sri Siva Subramaniya Temple",
+      "Garden of the Sleeping Giant",
+      "Denarau Marina"
+    ],
+    "latitude": -17.7765,
+    "longitude": 177.4356,
+    "id": "1c0c1654-a0bd-4456-883f-9318a0234fe9",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Denarau",
+    "slug": "denarau",
+    "tagline": "Luxury marina & world-class resorts",
+    "description": "Denarau Island is Fiji's premier luxury address — a gated enclave of five-star resorts, championship golf, fine dining and the main departure point for Mamanuca and Yasawa island cruises.",
+    "excerpt": "Denarau Island is Fiji's premier luxury address — a gated enclave of five-star resorts, championship golf, fine dining and the main departure point for Mamanuca and Yasawa island cruises.",
+    "heroImage": "https://images.unsplash.com/photo-1700631102571-4f8de88b5a70?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1648729638732-f444544d1990?w=1400&q=90&auto=format"
+    ],
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 3,
+    "content": {
+      "region": "mainland",
+      "cardImage": "https://images.unsplash.com/photo-1648729638732-f444544d1990?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Port Denarau Marina",
+        "Championship golf",
+        "Luxury shopping"
+      ],
+      "thingsToDo": [
+        "Sunset cruises",
+        "Jet ski safaris",
+        "Spa rituals",
+        "Island hopping"
+      ],
+      "placesToStay": [
+        "Hilton Fiji",
+        "Sofitel Fiji",
+        "Radisson Blu",
+        "Private residences"
+      ],
+      "tours": [
+        "Private yacht charter",
+        "Helicopter island tour",
+        "Golf & spa packages"
+      ],
+      "beaches": [
+        "Denarau Beach",
+        "Resort lagoon pools"
+      ],
+      "dining": [
+        "Ports O' Call",
+        "Nuku restaurant",
+        "Beach club dining"
+      ],
+      "transport": [
+        "10 min from Nadi airport",
+        "Marina ferries",
+        "Private car service"
+      ],
+      "culture": [
+        "Resort meke nights",
+        "Craft markets",
+        "Fijian cooking classes"
+      ],
+      "weather": "Sheltered west coast — drier than Suva. Ideal May–October.",
+      "bestTimeToVisit": "Sheltered west coast — drier than Suva. Ideal May–October.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Denarau?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Denarau?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "nadi",
+        "mamanuca",
+        "yasawa"
+      ]
+    },
+    "highlights": [
+      "Port Denarau Marina",
+      "Championship golf",
+      "Luxury shopping"
+    ],
+    "latitude": -17.7734,
+    "longitude": 177.3762,
+    "id": "9cfad345-3e79-45bf-a8a5-7abe9d494539",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Mamanuca Islands",
+    "slug": "mamanuca",
+    "tagline": "Castaway paradise & crystal lagoons",
+    "description": "The Mamanuca group is Fiji's most iconic island chain — turquoise lagoons, barefoot luxury and the filming location of countless tropical dreams, reached by seaplane or speedboat from Denarau.",
+    "excerpt": "The Mamanuca group is Fiji's most iconic island chain — turquoise lagoons, barefoot luxury and the filming location of countless tropical dreams, reached by seaplane or speedboat from Denarau.",
+    "heroImage": "https://images.unsplash.com/photo-1559940626-639e49dcbe69?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1692659505534-a1abd5eb4c73?w=1400&q=90&auto=format"
+    ],
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 4,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1692659505534-a1abd5eb4c73?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Castaway Island",
+        "Cloud 9 floating bar",
+        "World-class snorkelling"
+      ],
+      "thingsToDo": [
+        "Snorkelling",
+        "Surf Cloudbreak",
+        "Kayaking",
+        "Private picnics"
+      ],
+      "placesToStay": [
+        "Likuliku Lagoon Resort",
+        "Tokoriki Island Resort",
+        "Castaway Island"
+      ],
+      "tours": [
+        "Snorkel safari",
+        "Sunset sailing",
+        "Scuba discovery dive"
+      ],
+      "beaches": [
+        "Monuriki Beach",
+        "Modriki Island",
+        "Resort private beaches"
+      ],
+      "dining": [
+        "Overwater dining",
+        "Beach BBQ",
+        "Floating bar experiences"
+      ],
+      "transport": [
+        "Speedboat from Denarau",
+        "Seaplane transfers",
+        "Resort private boats"
+      ],
+      "culture": [
+        "Resort cultural nights",
+        "Village visits on nearby islands"
+      ],
+      "weather": "Trade-wind cooled. Dry season perfect for water clarity.",
+      "bestTimeToVisit": "Trade-wind cooled. Dry season perfect for water clarity.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit the Mamanuca Islands?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to the Mamanuca Islands?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "yasawa",
+        "denarau",
+        "coral-coast"
+      ]
+    },
+    "highlights": [
+      "Castaway Island",
+      "Cloud 9 floating bar",
+      "World-class snorkelling"
+    ],
+    "latitude": -17.6752,
+    "longitude": 177.1973,
+    "id": "ed64eac6-fce9-4c82-8d94-f07d50321bde",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Yasawa Islands",
+    "slug": "yasawa",
+    "tagline": "Remote islands & untouched beauty",
+    "description": "The Yasawa archipelago offers Fiji at its most raw and romantic — dramatic volcanic peaks, blue-hole caves, deserted beaches and a handful of the South Pacific's most exclusive eco-luxury retreats.",
+    "excerpt": "The Yasawa archipelago offers Fiji at its most raw and romantic — dramatic volcanic peaks, blue-hole caves, deserted beaches and a handful of the South Pacific's most exclusive eco-luxury retreats.",
+    "heroImage": "https://images.unsplash.com/photo-1730440009900-f91ec0c60612?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1683951443218-850f929b65e4?w=1400&q=90&auto=format"
+    ],
+    "featured": true,
+    "status": "PUBLISHED",
+    "sortOrder": 5,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1683951443218-850f929b65e4?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Sawa-i-Lau caves",
+        "Blue Lagoon",
+        "Remote luxury lodges"
+      ],
+      "thingsToDo": [
+        "Cave swimming",
+        "Village homestays",
+        "Hiking",
+        "Diving"
+      ],
+      "placesToStay": [
+        "Yasawa Island Resort",
+        "Turtle Island",
+        "Barefoot luxury lodges"
+      ],
+      "tours": [
+        "Blue Lagoon day trip",
+        "Cave expedition",
+        "Multi-island sailing"
+      ],
+      "beaches": [
+        "Octopus Beach",
+        "Nanuya Levu",
+        "Private resort coves"
+      ],
+      "dining": [
+        "Beach feasts",
+        "Resort degustation",
+        "Catch-of-the-day BBQ"
+      ],
+      "transport": [
+        "Yasawa Flyer ferry",
+        "Seaplane",
+        "Private yacht"
+      ],
+      "culture": [
+        "Remote village visits",
+        "Traditional fishing",
+        "Storytelling evenings"
+      ],
+      "weather": "Drier than mainland. Best visibility Jun–Sep.",
+      "bestTimeToVisit": "Drier than mainland. Best visibility Jun–Sep.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit the Yasawa Islands?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to the Yasawa Islands?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "mamanuca",
+        "taveuni",
+        "denarau"
+      ]
+    },
+    "highlights": [
+      "Sawa-i-Lau caves",
+      "Blue Lagoon",
+      "Remote luxury lodges"
+    ],
+    "latitude": -16.7588,
+    "longitude": 177.4127,
+    "id": "07661b83-52ac-4fa4-983d-843cb1260be3",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Taveuni",
+    "slug": "taveuni",
+    "tagline": "Garden Island & waterfall country",
+    "description": "Known as the Garden Island, Taveuni is a rainforest sanctuary of waterfalls, rare birds and world-famous dive sites — Bouma National Heritage Park and Rainbow Reef reward travellers who go beyond the resort circuit.",
+    "excerpt": "Known as the Garden Island, Taveuni is a rainforest sanctuary of waterfalls, rare birds and world-famous dive sites — Bouma National Heritage Park and Rainbow Reef reward travellers who go beyond the resort circuit.",
+    "heroImage": "https://images.unsplash.com/photo-1582260627178-67ee302a806f?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1543716349-79942dce62c9?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 6,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1543716349-79942dce62c9?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Bouma National Heritage Park",
+        "Rainbow Reef diving",
+        "Tavoro Waterfalls"
+      ],
+      "thingsToDo": [
+        "Waterfall hikes",
+        "Scuba diving",
+        "Birdwatching",
+        "Kayaking"
+      ],
+      "placesToStay": [
+        "Taveuni Island Resort",
+        "Garden Island Resort",
+        "Eco-lodges"
+      ],
+      "tours": [
+        "Bouma Falls trek",
+        "Rainbow Reef dive",
+        "Lavena Coastal Walk"
+      ],
+      "beaches": [
+        "Lavena Beach",
+        "Matei Beach",
+        "Hidden coves"
+      ],
+      "dining": [
+        "Plantation-style dining",
+        "Fresh tropical produce",
+        "Resort fusion menus"
+      ],
+      "transport": [
+        "Domestic flight from Nadi/Suva",
+        "Resort transfers",
+        "Boat charters"
+      ],
+      "culture": [
+        "Wainibau village",
+        "Traditional taro farms",
+        "Local craft"
+      ],
+      "weather": "Wettest region — lush year-round. Diving best Apr–Oct.",
+      "bestTimeToVisit": "Wettest region — lush year-round. Diving best Apr–Oct.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Taveuni?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Taveuni?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "yasawa",
+        "suva",
+        "pacific-harbour"
+      ]
+    },
+    "highlights": [
+      "Bouma National Heritage Park",
+      "Rainbow Reef diving",
+      "Tavoro Waterfalls"
+    ],
+    "latitude": -16.9512,
+    "longitude": -179.8677,
+    "id": "8d43114c-f86b-4495-af6c-bc2031661a8f",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Pacific Harbour",
+    "slug": "pacific-harbour",
+    "tagline": "Adventure capital of Fiji",
+    "description": "Pacific Harbour is Fiji's adrenaline address — shark diving in Beqa Lagoon, white-water rafting, zip-lining and luxury villas overlooking the Pacific, all within reach of Suva.",
+    "excerpt": "Pacific Harbour is Fiji's adrenaline address — shark diving in Beqa Lagoon, white-water rafting, zip-lining and luxury villas overlooking the Pacific, all within reach of Suva.",
+    "heroImage": "https://images.unsplash.com/photo-1731317736062-c9f8c085fe63?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1654180639088-65f1bc3312d6?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 7,
+    "content": {
+      "region": "mainland",
+      "cardImage": "https://images.unsplash.com/photo-1654180639088-65f1bc3312d6?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Shark diving",
+        "White-water rafting",
+        "Zip Fiji"
+      ],
+      "thingsToDo": [
+        "Shark feed dive",
+        "Rafting Upper Navua",
+        "Golf",
+        "Deep-sea fishing"
+      ],
+      "placesToStay": [
+        "The Pearl South Pacific",
+        "Luxury villas",
+        "Boutique lodges"
+      ],
+      "tours": [
+        "Beqa shark encounter",
+        "River rafting day",
+        "Fishing charter"
+      ],
+      "beaches": [
+        "Deuba coastline",
+        "Resort beaches",
+        "Day trips to Natadola via Coral Coast"
+      ],
+      "dining": [
+        "Marina restaurants",
+        "Resort fine dining",
+        "Local seafood"
+      ],
+      "transport": [
+        "2.5hr from Nadi",
+        "45min from Suva",
+        "Helicopter available"
+      ],
+      "culture": [
+        "Beqa fire-walking",
+        "Village performances",
+        "Artisan markets"
+      ],
+      "weather": "Slightly wetter than west coast. Adventure sports year-round.",
+      "bestTimeToVisit": "Slightly wetter than west coast. Adventure sports year-round.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Pacific Harbour?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Pacific Harbour?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "coral-coast",
+        "suva",
+        "taveuni"
+      ]
+    },
+    "highlights": [
+      "Shark diving",
+      "White-water rafting",
+      "Zip Fiji"
+    ],
+    "latitude": -18.2603,
+    "longitude": 178.0665,
+    "id": "bcbeeb4b-0d1c-40bd-aefd-dcb65ffec9c0",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Suva",
+    "slug": "suva",
+    "tagline": "Capital of culture & commerce",
+    "description": "Suva is the beating heart of modern Fiji — colonial architecture, vibrant markets, museums and a growing fine-dining scene, perfect for travellers who want culture before the beach.",
+    "excerpt": "Suva is the beating heart of modern Fiji — colonial architecture, vibrant markets, museums and a growing fine-dining scene, perfect for travellers who want culture before the beach.",
+    "heroImage": "https://images.unsplash.com/photo-1706435689170-7cb06383ea50?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1449347206122-792f0e389512?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 8,
+    "content": {
+      "region": "mainland",
+      "cardImage": "https://images.unsplash.com/photo-1449347206122-792f0e389512?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Fiji Museum",
+        "Municipal Market",
+        "Parliament & Thurston Gardens"
+      ],
+      "thingsToDo": [
+        "Market tours",
+        "Museum visits",
+        "Colonial walks",
+        "Nightlife"
+      ],
+      "placesToStay": [
+        "Grand Pacific Hotel",
+        "Holiday Inn Suva",
+        "Boutique city hotels"
+      ],
+      "tours": [
+        "City heritage walk",
+        "Colo-i-Suva forest swim",
+        "Highland day trip"
+      ],
+      "beaches": [
+        "No city beach — day trips to Pacific Harbour"
+      ],
+      "dining": [
+        "Fine dining",
+        "Indian street food",
+        "Seafood markets"
+      ],
+      "transport": [
+        "Nausori International Airport",
+        "Bus to Coral Coast",
+        "Domestic flights"
+      ],
+      "culture": [
+        "Fijian, Indian & Chinese heritage",
+        "Live music",
+        "Art galleries"
+      ],
+      "weather": "Wettest major city. Carry light rain gear year-round.",
+      "bestTimeToVisit": "Wettest major city. Carry light rain gear year-round.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Suva?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Suva?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "pacific-harbour",
+        "coral-coast",
+        "taveuni"
+      ]
+    },
+    "highlights": [
+      "Fiji Museum",
+      "Municipal Market",
+      "Parliament & Thurston Gardens"
+    ],
+    "latitude": -18.1416,
+    "longitude": 178.4419,
+    "id": "676ab3be-8d99-45cf-aa7f-b5b95e2b782a",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Vanua Levu",
+    "slug": "vanua-levu",
+    "tagline": "Northern reefs & rainforest calm",
+    "description": "Fiji's second-largest island — Savusavu Bay hot springs, Great Sea Reef diving and plantation country without the west-coast crowds. A quieter luxury alternative for repeat visitors.",
+    "excerpt": "Fiji's second-largest island — Savusavu Bay hot springs, Great Sea Reef diving and plantation country without the west-coast crowds. A quieter luxury alternative for repeat visitors.",
+    "heroImage": "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 9,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Savusavu Bay",
+        "Great Sea Reef",
+        "Wasali Nature Reserve"
+      ],
+      "thingsToDo": [
+        "Reef diving",
+        "Hot springs",
+        "Plantation tours",
+        "Kayaking"
+      ],
+      "placesToStay": [
+        "Namale Resort & Spa",
+        "Jean-Michel Cousteau Resort",
+        "Boutique Savusavu lodges"
+      ],
+      "tours": [
+        "Diving expeditions",
+        "Rainforest walks",
+        "Copra plantation visits"
+      ],
+      "beaches": [
+        "Savusavu Bay",
+        "Labasa coast",
+        "Hidden northern coves"
+      ],
+      "dining": [
+        "Resort fine dining",
+        "Savusavu waterfront",
+        "Farm-to-table plantation meals"
+      ],
+      "transport": [
+        "Domestic flight from Nadi/Suva",
+        "Labasa airport",
+        "Private boat charters"
+      ],
+      "culture": [
+        "Village visits",
+        "Copra heritage",
+        "Northern Fijian craft markets"
+      ],
+      "weather": "Wetter north — lush year-round. Diving clearest May–Oct.",
+      "bestTimeToVisit": "Wetter north — lush year-round. Diving clearest May–Oct.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Vanua Levu?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Vanua Levu?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "taveuni",
+        "suva",
+        "kadavu"
+      ]
+    },
+    "highlights": [
+      "Savusavu Bay",
+      "Great Sea Reef",
+      "Wasali Nature Reserve"
+    ],
+    "latitude": -16.6268,
+    "longitude": 179.0122,
+    "id": "d5506fc1-4480-4b62-afef-2c515c390d86",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Kadavu",
+    "slug": "kadavu",
+    "tagline": "Astrolabe Reef & total seclusion",
+    "description": "Remote Kadavu and the Great Astrolabe Reef deliver manta encounters, drift diving and eco-luxury with almost no development — for travellers who want Fiji without the brochure crowds.",
+    "excerpt": "Remote Kadavu and the Great Astrolabe Reef deliver manta encounters, drift diving and eco-luxury with almost no development — for travellers who want Fiji without the brochure crowds.",
+    "heroImage": "https://images.unsplash.com/photo-1718152220002-6708fe3894a5?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1718152220002-6708fe3894a5?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 10,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1718152220002-6708fe3894a5?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Great Astrolabe Reef",
+        "Manta ray season",
+        "Papageno Resort"
+      ],
+      "thingsToDo": [
+        "Reef diving",
+        "Manta snorkelling",
+        "Kayaking",
+        "Village immersions"
+      ],
+      "placesToStay": [
+        "Papageno Resort",
+        "Matava Eco Resort",
+        "Private island lodges"
+      ],
+      "tours": [
+        "Multi-day dive packages",
+        "Kayak expeditions",
+        "Village homestays"
+      ],
+      "beaches": [
+        "Vunisea Bay",
+        "Namalata coast",
+        "Resort coves"
+      ],
+      "dining": [
+        "Catch-of-the-day feasts",
+        "Resort tasting menus",
+        "Village lovo experiences"
+      ],
+      "transport": [
+        "Domestic flight from Nadi",
+        "Boat from Suva",
+        "Resort transfers"
+      ],
+      "culture": [
+        "Village welcome ceremonies",
+        "Traditional fishing",
+        "Masi weaving"
+      ],
+      "weather": "Tropical south — calm seas Apr–Nov. Manta season peaks in cooler months.",
+      "bestTimeToVisit": "Tropical south — calm seas Apr–Nov. Manta season peaks in cooler months.",
+      "travelTips": [],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Kadavu?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Kadavu?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "vanua-levu",
+        "pacific-harbour",
+        "taveuni"
+      ]
+    },
+    "highlights": [
+      "Great Astrolabe Reef",
+      "Manta ray season",
+      "Papageno Resort"
+    ],
+    "latitude": -19.0536,
+    "longitude": 178.1569,
+    "id": "7b1930b2-cf2c-4772-8ee5-b245e5a867ab",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Savusavu",
+    "slug": "savusavu",
+    "tagline": "Hidden harbour & hot springs luxury",
+    "description": "Savusavu is Fiji's best-kept secret — a horseshoe bay of boutique resorts, geothermal hot springs and world-class diving on the Great Sea Reef, without the west-coast crowds.",
+    "excerpt": "A boutique northern harbour where luxury travellers discover reef diving, plantation estates and geothermal springs in an intimate, uncrowded setting.",
+    "heroImage": "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format",
+      "https://images.unsplash.com/photo-1700619769904-3e2bedeb2c51?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 11,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1620011059654-1d7caf209797?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Savusavu Bay",
+        "Hot springs",
+        "Great Sea Reef"
+      ],
+      "thingsToDo": [
+        "Reef diving",
+        "Hot spring bathing",
+        "Plantation tours",
+        "Kayaking"
+      ],
+      "placesToStay": [
+        "Namale Resort & Spa",
+        "Jean-Michel Cousteau Resort",
+        "Boutique bay lodges"
+      ],
+      "tours": [
+        "Dive expeditions",
+        "Rainforest walks",
+        "Copra plantation visits"
+      ],
+      "beaches": [
+        "Savusavu Bay",
+        "Hidden coves",
+        "Resort beaches"
+      ],
+      "dining": [
+        "Waterfront fine dining",
+        "Farm-to-table plantation meals",
+        "Resort tasting menus"
+      ],
+      "transport": [
+        "Domestic flight from Nadi",
+        "Private boat charters",
+        "Resort transfers"
+      ],
+      "culture": [
+        "Village visits",
+        "Northern craft markets",
+        "Copra heritage"
+      ],
+      "weather": "Lush and warm year-round. Diving clearest May–October.",
+      "bestTimeToVisit": "May through October for dry weather and exceptional reef visibility.",
+      "travelTips": [
+        "Book domestic flights early — limited daily services to Savusavu.",
+        "Pack reef-safe sunscreen and a light rain jacket for afternoon showers.",
+        "Combine with Taveuni for a twin Garden Island itinerary."
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Savusavu?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Savusavu?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "vanua-levu",
+        "taveuni",
+        "kadavu"
+      ]
+    },
+    "highlights": [
+      "Savusavu Bay",
+      "Hot springs",
+      "Great Sea Reef"
+    ],
+    "latitude": -16.7798,
+    "longitude": 179.3382,
+    "id": "ed9e7ef8-3d03-4a59-979e-0b54973e6e12",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Beqa Island",
+    "slug": "beqa-island",
+    "tagline": "Shark diving & fire-walking legends",
+    "description": "Beqa Lagoon is legendary — home to the Beqa fire-walkers, world-famous shark dives and pristine reef systems just south of Pacific Harbour on Fiji's adventure coast.",
+    "excerpt": "An island of adrenaline and tradition — shark encounters by day, fire-walking ceremonies by night, minutes from Pacific Harbour.",
+    "heroImage": "https://images.unsplash.com/photo-1734343470199-dcef3f2104af?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1734343470199-dcef3f2104af?w=1400&q=90&auto=format",
+      "https://images.unsplash.com/photo-1731317736062-c9f8c085fe63?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 12,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1654180639088-65f1bc3312d6?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Beqa Lagoon shark dive",
+        "Fire-walking",
+        "Pristine reefs"
+      ],
+      "thingsToDo": [
+        "Shark feed diving",
+        "Reef snorkelling",
+        "Village fire-walking",
+        "Deep-sea fishing"
+      ],
+      "placesToStay": [
+        "Beqa Lagoon Resort",
+        "Pacific Harbour villas",
+        "Boutique island lodges"
+      ],
+      "tours": [
+        "Shark encounter dive",
+        "Fire-walking ceremony",
+        "Fishing charter"
+      ],
+      "beaches": [
+        "Beqa lagoon shores",
+        "Resort beaches",
+        "Day trips to Natadola"
+      ],
+      "dining": [
+        "Island lovo feasts",
+        "Marina restaurants",
+        "Catch-of-the-day"
+      ],
+      "transport": [
+        "Boat from Pacific Harbour",
+        "45min from Suva",
+        "Helicopter transfers"
+      ],
+      "culture": [
+        "Beqa fire-walking tradition",
+        "Village ceremonies",
+        "Artisan craft"
+      ],
+      "weather": "Warm tropical. Best diving visibility May–October.",
+      "bestTimeToVisit": "May to October for calm seas and optimal shark dive conditions.",
+      "travelTips": [
+        "Shark dives require advanced certification or guided discovery programs.",
+        "Respect village protocols during fire-walking ceremonies.",
+        "Pair with Pacific Harbour for rafting and zip-lining day trips."
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Beqa Island?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Beqa Island?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "pacific-harbour",
+        "coral-coast",
+        "kadavu"
+      ]
+    },
+    "highlights": [
+      "Beqa Lagoon shark dive",
+      "Fire-walking",
+      "Pristine reefs"
+    ],
+    "latitude": null,
+    "longitude": null,
+    "id": "92cc7300-92a0-4fe7-b052-0c03a967e4b2",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Mana Island",
+    "slug": "mana-island",
+    "tagline": "Family-friendly island paradise",
+    "description": "Mana Island sits in the heart of the Mamanucas — a coral-fringed escape with family resorts, snorkelling straight off the beach and easy speedboat access from Denarau.",
+    "excerpt": "A classic Mamanuca island retreat — reef access, resort dining and barefoot luxury ideal for families and first-time island hoppers.",
+    "heroImage": "https://images.unsplash.com/photo-1559940626-639e49dcbe69?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1559940626-639e49dcbe69?w=1400&q=90&auto=format",
+      "https://images.unsplash.com/photo-1654180666810-1936b84ab4e3?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 13,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1692659505534-a1abd5eb4c73?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Reef snorkelling",
+        "Family resorts",
+        "Sunset beaches"
+      ],
+      "thingsToDo": [
+        "Snorkelling",
+        "Kayaking",
+        "Island walks",
+        "Sunset cruises"
+      ],
+      "placesToStay": [
+        "Mana Island Resort",
+        "Nearby Mamanuca resorts"
+      ],
+      "tours": [
+        "Snorkel safari",
+        "Sunset sailing",
+        "Denarau day trips"
+      ],
+      "beaches": [
+        "Mana Island beach",
+        "Reef lagoons",
+        "Private coves"
+      ],
+      "dining": [
+        "Resort buffets",
+        "Beach BBQ",
+        "Island feasts"
+      ],
+      "transport": [
+        "Speedboat from Denarau",
+        "Resort transfers",
+        "Seaplane options"
+      ],
+      "culture": [
+        "Resort meke nights",
+        "Village visits",
+        "Craft demonstrations"
+      ],
+      "weather": "Trade-wind cooled. Dry season May–October ideal.",
+      "bestTimeToVisit": "May through October for calm lagoon waters and family-friendly conditions.",
+      "travelTips": [
+        "Book return boat transfers when reserving your resort stay.",
+        "Bring reef shoes for exploring tidal pools.",
+        "Combine with Denarau for marina dining and golf."
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Mana Island?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Mana Island?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "mamanuca",
+        "malolo-island",
+        "denarau"
+      ]
+    },
+    "highlights": [
+      "Reef snorkelling",
+      "Family resorts",
+      "Sunset beaches"
+    ],
+    "latitude": null,
+    "longitude": null,
+    "id": "a875562a-b645-4ef9-9cff-c48abf72e0e5",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Malolo Island",
+    "slug": "malolo-island",
+    "tagline": "Pristine lagoons & boutique resorts",
+    "description": "Malolo Lailai is the Mamanuca's resort hub — turquoise lagoons, boutique bures and world-class diving, a short speedboat ride from Port Denarau Marina.",
+    "excerpt": "The Mamanuca's most accessible island resort destination — lagoon swimming, diving and boutique luxury minutes from Denarau.",
+    "heroImage": "https://images.unsplash.com/photo-1654180444501-633d033d8923?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1654180444501-633d033d8923?w=1400&q=90&auto=format",
+      "https://images.unsplash.com/photo-1559940626-639e49dcbe69?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 14,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1692659505534-a1abd5eb4c73?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Malolo Lailai",
+        "Lagoon swimming",
+        "Boutique resorts"
+      ],
+      "thingsToDo": [
+        "Snorkelling",
+        "Diving",
+        "Spa rituals",
+        "Island hopping"
+      ],
+      "placesToStay": [
+        "Plantation Island Resort",
+        "Lomani Island Resort",
+        "Malolo Island Resort"
+      ],
+      "tours": [
+        "Reef dive packages",
+        "Sunset cruise",
+        "Multi-island sailing"
+      ],
+      "beaches": [
+        "Malolo Lailai lagoon",
+        "Resort beaches",
+        "Hidden sandbanks"
+      ],
+      "dining": [
+        "Overwater dining",
+        "Beach BBQ",
+        "Resort tasting menus"
+      ],
+      "transport": [
+        "Speedboat from Denarau",
+        "Seaplane",
+        "Resort private boats"
+      ],
+      "culture": [
+        "Resort cultural nights",
+        "Village visits",
+        "Fijian cooking classes"
+      ],
+      "weather": "Sheltered lagoons. Best water clarity June–September.",
+      "bestTimeToVisit": "June to September for crystal-clear lagoon visibility and calm seas.",
+      "travelTips": [
+        "Malolo Lailai is a shared resort island — check which property suits your style.",
+        "Pre-book speedboat seats during peak season.",
+        "Ideal base for Mamanuca island-hopping day trips."
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Malolo Island?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Malolo Island?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "mamanuca",
+        "mana-island",
+        "tokoriki-island"
+      ]
+    },
+    "highlights": [
+      "Malolo Lailai",
+      "Lagoon swimming",
+      "Boutique resorts"
+    ],
+    "latitude": null,
+    "longitude": null,
+    "id": "ce3578ec-5314-47e5-93b6-a4fd6e74a971",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  },
+  {
+    "name": "Tokoriki Island",
+    "slug": "tokoriki-island",
+    "tagline": "Honeymoon haven in the Mamanucas",
+    "description": "Tokoriki Island Resort defines Mamanuca romance — just 36 beachfront bures on a private island, adults-focused luxury and sunsets that stop conversations.",
+    "excerpt": "An intimate adults-oriented island resort — honeymoon bures, private dining and diving on Fiji's most romantic Mamanuca escape.",
+    "heroImage": "https://images.unsplash.com/photo-1654180363018-c5a0a308ae02?w=1400&q=90&auto=format",
+    "gallery": [
+      "https://images.unsplash.com/photo-1654180363018-c5a0a308ae02?w=1400&q=90&auto=format",
+      "https://images.unsplash.com/photo-1559940626-639e49dcbe69?w=1400&q=90&auto=format"
+    ],
+    "featured": false,
+    "status": "PUBLISHED",
+    "sortOrder": 15,
+    "content": {
+      "region": "islands",
+      "cardImage": "https://images.unsplash.com/photo-1654180363018-c5a0a308ae02?w=1400&q=90&auto=format",
+      "listHighlights": [
+        "Beachfront bures",
+        "Adults luxury",
+        "Private dining"
+      ],
+      "thingsToDo": [
+        "Diving",
+        "Couples spa",
+        "Private picnics",
+        "Village visits"
+      ],
+      "placesToStay": [
+        "Tokoriki Island Resort"
+      ],
+      "tours": [
+        "Dive packages",
+        "Sunset cruise",
+        "Private island picnic"
+      ],
+      "beaches": [
+        "Tokoriki private beach",
+        "Reef access",
+        "Sandbank dinners"
+      ],
+      "dining": [
+        "Private beach dining",
+        "Resort degustation",
+        "Champagne sunsets"
+      ],
+      "transport": [
+        "Speedboat from Denarau",
+        "Helicopter transfers",
+        "Resort meet-and-greet"
+      ],
+      "culture": [
+        "Resort meke nights",
+        "Private dining traditions",
+        "Island hospitality"
+      ],
+      "weather": "Trade-wind cooled west. Ideal May–October.",
+      "bestTimeToVisit": "May to October for honeymoon-perfect weather and calm lagoon seas.",
+      "travelTips": [
+        "Adults-only atmosphere — ideal for couples and honeymoons.",
+        "Book spa and private dining when confirming your stay.",
+        "Request a beachfront bure for the best sunset views."
+      ],
+      "faqs": [
+        {
+          "question": "What is the best time to visit Tokoriki Island?",
+          "answer": "May through October offers dry, sunny weather ideal for beaches and water activities. November to April is warmer with lush landscapes and fewer crowds at luxury resorts."
+        },
+        {
+          "question": "How do I get to Tokoriki Island?",
+          "answer": "International flights arrive at Nadi International Airport. Private transfers, seaplanes and resort boats connect you to your final destination within hours."
+        }
+      ],
+      "relatedSlugs": [
+        "mamanuca",
+        "likuliku-lagoon",
+        "malolo-island"
+      ]
+    },
+    "highlights": [
+      "Beachfront bures",
+      "Adults luxury",
+      "Private dining"
+    ],
+    "latitude": null,
+    "longitude": null,
+    "id": "f8f6a0f8-45d2-487b-bf5d-47f666b2973f",
+    "createdAt": "2026-06-20T05:31:46.729Z",
+    "updatedAt": "2026-06-20T05:31:46.729Z"
+  }
+]

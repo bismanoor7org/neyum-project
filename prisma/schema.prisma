@@ -1,0 +1,2333 @@
+// My Fiji Tour — Production marketplace schema
+// PostgreSQL + Prisma | Clerk (auth) | Stripe (payments) | Cloudinary (media)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum UserRole {
+  TRAVELER
+  SUPPLIER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+  PENDING_VERIFICATION
+}
+
+enum AuthTokenType {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+  VERIFIED
+}
+
+enum TourStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  REJECTED
+  ARCHIVED
+}
+
+enum TransportType {
+  AIRPORT_TRANSFER
+  BOAT_TRANSFER
+  PRIVATE_DRIVER
+  ISLAND_TRANSFER
+}
+
+enum ServiceStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  REFUNDED
+}
+
+enum StripePaymentStatus {
+  REQUIRES_PAYMENT_METHOD
+  REQUIRES_CONFIRMATION
+  REQUIRES_ACTION
+  PROCESSING
+  SUCCEEDED
+  CANCELED
+  FAILED
+}
+
+enum SettlementStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  FLAGGED
+}
+
+enum NotificationType {
+  BOOKING
+  SUPPLIER
+  TOUR
+  PAYMENT
+  REFUND
+  REVIEW
+  SUPPORT
+  SYSTEM
+}
+
+enum ActivityModule {
+  AUTH
+  USERS
+  SUPPLIERS
+  TOURS
+  TRANSPORT
+  BOOKINGS
+  PAYMENTS
+  SETTLEMENTS
+  REVIEWS
+  CONTENT
+  SETTINGS
+  SUPPORT
+  ANALYTICS
+}
+
+enum GuideCategory {
+  FIRST_TIME
+  VISA
+  WEATHER
+  CULTURE
+  TRANSPORT
+  DINING
+  SAFETY
+  ITINERARY
+  GENERAL
+}
+
+enum ContentStatus {
+  DRAFT
+  PENDING_REVIEW
+  NEEDS_CHANGES
+  APPROVED
+  PUBLISHED
+  SCHEDULED
+  ARCHIVED
+}
+
+enum TicketType {
+  USER
+  SUPPLIER
+  COMPLAINT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum AnalyticsSource {
+  GOOGLE_ANALYTICS
+  MICROSOFT_CLARITY
+  SEARCH_CONSOLE
+  INTERNAL
+}
+
+enum KycStatus {
+  NOT_STARTED
+  IN_REVIEW
+  APPROVED
+  REJECTED
+  RESUBMIT_REQUIRED
+}
+
+enum SupplierMemberRole {
+  OWNER
+  MANAGER
+  SALES_AGENT
+  OPERATIONS
+  FINANCE
+  GUIDE_MANAGER
+  CUSTOM
+}
+
+enum SupplierMemberStatus {
+  ACTIVE
+  INVITED
+  SUSPENDED
+}
+
+enum DocumentType {
+  LICENSE
+  INSURANCE
+  CERTIFICATION
+  CONTRACT
+  KYC_ID
+  COMPLIANCE
+  OTHER
+}
+
+enum DocumentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum CalendarBlockType {
+  BLACKOUT
+  HOLIDAY
+  MAINTENANCE
+  STAFF_UNAVAILABLE
+}
+
+enum AutomationTrigger {
+  BOOKING_CONFIRMED
+  BOOKING_REMINDER
+  PAYMENT_REMINDER
+  REVIEW_REQUEST
+  DOCUMENT_EXPIRY
+  PAYOUT_SENT
+  CANCELLATION
+}
+
+enum MessageChannel {
+  CUSTOMER
+  ADMIN
+  INTERNAL
+}
+
+enum ResourceStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1. USERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  id           String     @id @default(cuid())
+  clerkId          String?    @unique
+  googleId         String?    @unique
+  emailVerifiedAt  DateTime?
+  firstName        String
+  lastName         String
+  email            String     @unique
+  passwordHash     String?
+  twoFactorSecret String?
+  twoFactorEnabled Boolean @default(false)
+  phone        String?
+  avatar       String?
+  role         UserRole   @default(TRAVELER)
+  status       UserStatus @default(ACTIVE)
+  lastLoginAt  DateTime?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  supplier         Supplier?
+  bookings         Booking[]        @relation("TravelerBookings")
+  reviews          Review[]
+  notifications    Notification[]
+  activityLogs     ActivityLog[]
+  supportTickets   SupportTicket[]  @relation("TicketSubmitter")
+  assignedTickets  SupportTicket[]  @relation("TicketAssignee")
+
+  travellerProfile          TravellerProfile?
+  wishlistItems             WishlistItem[]
+  wishlistCollections       WishlistCollection[]
+  favourites                Favourite[]
+  itineraries               TravellerItinerary[]
+  travelDocuments           TravelDocument[]
+  travelCompanions          TravelCompanion[]
+  savedSearches             SavedSearch[]
+  travellerMessages         TravellerMessage[]              @relation("TravellerMessages")
+  paymentMethods            TravellerPaymentMethod[]
+  invoices                  TravellerInvoice[]
+  refunds                   TravellerRefund[]
+  loyaltyAccount            LoyaltyAccount?
+  loginSessions             LoginSession[]
+  authTokens                AuthToken[]
+  travellerWallet           TravellerWallet?
+  notificationPreference    TravellerNotificationPreference?
+  promoRedemptions          TravellerPromoRedemption[]
+  reviewMedia               ReviewMedia[]
+  adminStaffProfile         AdminStaffProfile?
+  mediaUploads              MediaAsset[]
+  reviewedSubmissions       SupplierContentSubmission[] @relation("SubmissionReviewer")
+
+  @@index([role, status])
+  @@index([createdAt])
+  @@map("users")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. SUPPLIERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Supplier {
+  id                 String             @id @default(cuid())
+  userId             String             @unique
+  companyName        String
+  description        String?            @db.Text
+  logo               String?
+  website            String?
+  phone              String?
+  address            String?
+  country            String?
+  city               String?
+  taxId              String?
+  businessLicenseNo  String?
+  verificationStatus VerificationStatus @default(PENDING)
+  kycStatus          KycStatus          @default(NOT_STARTED)
+  onboardingStep     Int                @default(0)
+  rejectionReason    String?            @db.Text
+  resubmissionNote   String?            @db.Text
+  rating             Decimal            @default(0) @db.Decimal(3, 2)
+  healthScore        Decimal            @default(0) @db.Decimal(5, 2)
+  responseRate       Decimal            @default(0) @db.Decimal(5, 2)
+  cancellationRate   Decimal            @default(0) @db.Decimal(5, 2)
+  stripeAccountId    String?
+  stripeOnboarded    Boolean            @default(false)
+  paypalMerchantId   String?
+  instantBooking     Boolean            @default(false)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user                   User                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tours                  Tour[]
+  transportationServices TransportationService[]
+  bookings               Booking[]
+  settlements            Settlement[]
+  commissionRules        CommissionRule[]
+  supportTickets         SupportTicket[]
+  teamMembers            SupplierTeamMember[]
+  documents              SupplierDocument[]
+  calendarBlocks         SupplierCalendarBlock[]
+  tourAvailabilities     TourAvailability[]
+  automations            SupplierAutomation[]
+  messages               SupplierMessage[]
+  guides                 SupplierGuide[]
+  vehicles               SupplierVehicle[]
+  customerNotes          SupplierCustomerNote[]
+  performanceLogs        SupplierPerformanceLog[]
+  notificationPreference SupplierNotificationPreference?
+  contentSubmissions     SupplierContentSubmission[]
+
+  @@index([verificationStatus])
+  @@index([kycStatus])
+  @@index([companyName])
+  @@map("suppliers")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. DESTINATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Destination {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?       @db.Text
+  excerpt     String?
+  tagline     String?
+  heroImage   String?
+  gallery     String[]
+  highlights  Json?
+  content     Json?
+  latitude    Decimal?      @db.Decimal(10, 7)
+  longitude   Decimal?      @db.Decimal(10, 7)
+  featured    Boolean       @default(false)
+  status      ContentStatus @default(PUBLISHED)
+  sortOrder   Int           @default(0)
+  updatedById String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  tours Tour[]
+  accommodations Accommodation[]
+  deals Deal[]
+  transportationServices TransportationService[]
+
+  @@index([featured, sortOrder])
+  @@index([status])
+  @@map("destinations")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4. TOURS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Tour {
+  id              String     @id @default(cuid())
+  supplierId      String
+  destinationId   String
+  title           String
+  slug            String     @unique
+  description     String     @db.Text
+  duration        String
+  durationMinutes Int?
+  price           Decimal    @db.Decimal(12, 2)
+  currency        String     @default("FJD")
+  featuredImage   String?
+  gallery         String[]
+  status          TourStatus @default(DRAFT)
+  rating          Decimal    @default(0) @db.Decimal(3, 2)
+  reviewCount     Int        @default(0)
+  featured        Boolean    @default(false)
+  maxGuests       Int        @default(10)
+  content         Json?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  supplier    Supplier    @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+  destination Destination @relation(fields: [destinationId], references: [id], onDelete: Restrict)
+  bookings    Booking[]
+  reviews     Review[]
+  availabilities TourAvailability[]
+  calendarBlocks SupplierCalendarBlock[]
+
+  @@index([supplierId])
+  @@index([destinationId])
+  @@index([status, featured])
+  @@index([createdAt])
+  @@map("tours")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. TRANSPORTATION SERVICES
+// ─────────────────────────────────────────────────────────────────────────────
+
+model TransportationService {
+  id            String        @id @default(cuid())
+  supplierId    String
+  destinationId String?
+  title         String
+  type        TransportType
+  description String?       @db.Text
+  capacity    Int
+  price       Decimal       @db.Decimal(12, 2)
+  currency    String        @default("FJD")
+  image       String?
+  status      ServiceStatus @default(PENDING)
+  featured    Boolean       @default(false)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  supplier Supplier  @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+  destination Destination? @relation(fields: [destinationId], references: [id], onDelete: SetNull)
+  bookings Booking[]
+
+  @@index([supplierId, status])
+  @@index([type, featured])
+  @@index([destinationId])
+  @@map("transportation_services")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6. BOOKINGS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Booking {
+  id               String        @id @default(cuid())
+  bookingNumber    String        @unique
+  travelerId       String
+  supplierId       String
+  tourId           String?
+  transportId      String?
+  amount           Decimal       @db.Decimal(12, 2)
+  commissionAmount Decimal       @db.Decimal(12, 2)
+  supplierAmount   Decimal       @db.Decimal(12, 2)
+  currency         String        @default("FJD")
+  paymentStatus    PaymentStatus @default(PENDING)
+  bookingStatus    BookingStatus @default(PENDING)
+  paymentMode      PaymentMode   @default(FULL)
+  adultCount       Int           @default(1)
+  childCount       Int           @default(0)
+  subtotal         Decimal       @db.Decimal(12, 2) @default(0)
+  taxAmount        Decimal       @db.Decimal(12, 2) @default(0)
+  serviceFee       Decimal       @db.Decimal(12, 2) @default(0)
+  discountAmount   Decimal       @db.Decimal(12, 2) @default(0)
+  walletCredit     Decimal       @db.Decimal(12, 2) @default(0)
+  depositAmount    Decimal?      @db.Decimal(12, 2)
+  promoCode        String?
+  timeSlot         String?
+  pickupLocation   String?
+  checkoutSessionId String?      @unique
+  bookingDate      DateTime      @default(now())
+  travelDate       DateTime?
+  guestCount       Int           @default(1)
+  notes            String?       @db.Text
+  cancelledAt      DateTime?
+  cancelReason     String?
+  refundedAt       DateTime?
+  refundAmount     Decimal?      @db.Decimal(12, 2)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  traveler  User                   @relation("TravelerBookings", fields: [travelerId], references: [id], onDelete: Restrict)
+  supplier  Supplier               @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+  tour      Tour?                  @relation(fields: [tourId], references: [id], onDelete: SetNull)
+  transport TransportationService? @relation(fields: [transportId], references: [id], onDelete: SetNull)
+  payments  Payment[]
+  timelineEvents BookingEvent[]
+  invoices  TravellerInvoice[]
+  refunds   TravellerRefund[]
+  items     BookingItem[]
+  travellers BookingTraveller[]
+  voucher   BookingVoucher?
+  bookingInvoice BookingInvoice?
+  paymentAttempts PaymentAttempt[]
+  transactions Transaction[]
+  logs      BookingLog[]
+  checkoutSession CheckoutSession? @relation(fields: [checkoutSessionId], references: [id], onDelete: SetNull)
+
+  @@index([travelerId])
+  @@index([supplierId])
+  @@index([tourId])
+  @@index([transportId])
+  @@index([bookingStatus, paymentStatus])
+  @@index([bookingDate])
+  @@index([travelDate])
+  @@map("bookings")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7. PAYMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Payment {
+  id              String              @id @default(cuid())
+  bookingId       String
+  stripePaymentId String?             @unique
+  stripeIntentId  String?             @unique
+  amount          Decimal             @db.Decimal(12, 2)
+  currency        String              @default("FJD")
+  status          StripePaymentStatus @default(REQUIRES_PAYMENT_METHOD)
+  failureMessage  String?
+  refundedAmount  Decimal?            @db.Decimal(12, 2)
+  metadata        Json?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+  attempts PaymentAttempt[]
+
+  @@index([bookingId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("payments")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8. SETTLEMENTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Settlement {
+  id            String           @id @default(cuid())
+  supplierId    String
+  amount        Decimal          @db.Decimal(12, 2)
+  grossAmount   Decimal          @db.Decimal(12, 2)
+  commission    Decimal          @db.Decimal(12, 2)
+  currency      String           @default("FJD")
+  invoiceNumber String           @unique
+  periodStart   DateTime
+  periodEnd     DateTime
+  status        SettlementStatus @default(PENDING)
+  paidAt        DateTime?
+  invoiceUrl    String?
+  notes         String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+
+  @@index([supplierId, status])
+  @@index([periodStart, periodEnd])
+  @@map("settlements")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 9. REVIEWS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Review {
+  id        String       @id @default(cuid())
+  userId    String
+  tourId    String
+  rating    Int
+  review    String?      @db.Text
+  status    ReviewStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tour Tour @relation(fields: [tourId], references: [id], onDelete: Cascade)
+  media ReviewMedia[]
+
+  @@unique([userId, tourId])
+  @@index([tourId, status])
+  @@index([rating])
+  @@map("reviews")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 10. TRAVEL GUIDES
+// ─────────────────────────────────────────────────────────────────────────────
+
+model TravelGuide {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  content       String        @db.Text
+  body          Json?
+  excerpt       String?
+  featuredImage String?
+  category      GuideCategory @default(GENERAL)
+  featured      Boolean       @default(false)
+  status        ContentStatus @default(DRAFT)
+  authorId      String?
+  publishedAt   DateTime?
+  sortOrder     Int           @default(0)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([category, status])
+  @@index([featured, status])
+  @@index([publishedAt])
+  @@map("travel_guides")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 11. FAQS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Faq {
+  id        String        @id @default(cuid())
+  question  String
+  answer    String        @db.Text
+  category  String?
+  sortOrder Int           @default(0)
+  published Boolean       @default(true)
+  status    ContentStatus @default(PUBLISHED)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([published, sortOrder])
+  @@index([status])
+  @@map("faqs")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 12. NOTIFICATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  title     String
+  message   String           @db.Text
+  type      NotificationType
+  isRead    Boolean          @default(false)
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 13. ACTIVITY LOGS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model ActivityLog {
+  id        String         @id @default(cuid())
+  userId    String?
+  action    String
+  module    ActivityModule
+  entityId  String?
+  metadata  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime       @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([module, createdAt])
+  @@index([entityId])
+  @@map("activity_logs")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PLATFORM CONFIGURATION
+// ─────────────────────────────────────────────────────────────────────────────
+
+model PlatformSettings {
+  id                    String   @id @default("default")
+  platformName          String   @default("My Fiji Tour")
+  supportEmail          String   @default("concierge@myfijitour.com")
+  defaultCurrency       String   @default("FJD")
+  timezone              String   @default("Pacific/Fiji")
+  commissionPercentage  Decimal  @default(15) @db.Decimal(5, 2)
+  stripeMode            String   @default("test")
+  emailFromName         String?
+  emailFromAddress      String?
+  googleAnalyticsId     String?
+  microsoftClarityId    String?
+  searchConsoleProperty String?
+  updatedAt             DateTime @updatedAt
+
+  @@map("platform_settings")
+}
+
+model CommissionRule {
+  id               String   @id @default(cuid())
+  name             String
+  percentage       Decimal  @db.Decimal(5, 2)
+  minBookingAmount Decimal? @db.Decimal(12, 2)
+  maxBookingAmount Decimal? @db.Decimal(12, 2)
+  supplierId       String?
+  tourCategory     String?
+  active           Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  supplier Supplier? @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([active])
+  @@index([supplierId])
+  @@map("commission_rules")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTENT MANAGEMENT
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Banner {
+  id        String        @id @default(cuid())
+  title     String
+  subtitle  String?
+  imageUrl  String
+  linkUrl   String?
+  position  String        @default("homepage")
+  status    ContentStatus @default(DRAFT)
+  sortOrder Int           @default(0)
+  startsAt  DateTime?
+  endsAt    DateTime?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([position, status])
+  @@map("banners")
+}
+
+model HomepageSection {
+  id        String        @id @default(cuid())
+  key       String        @unique
+  title     String
+  content   Json
+  status    ContentStatus @default(DRAFT)
+  sortOrder Int           @default(0)
+  updatedAt DateTime      @updatedAt
+
+  @@map("homepage_sections")
+}
+
+/// Hotels & resorts — Places to Stay module
+model Accommodation {
+  id             String        @id @default(cuid())
+  title          String
+  slug           String        @unique
+  location       String
+  destinationId  String?
+  stars          Int           @default(5)
+  priceFrom      String?
+  overview       String        @db.Text
+  heroImage      String?
+  gallery        String[]      @default([])
+  amenities      String[]      @default([])
+  experiences    String[]      @default([])
+  content        Json?
+  collection     String?
+  relatedSlugs   String[]      @default([])
+  featured       Boolean       @default(false)
+  status         ContentStatus @default(DRAFT)
+  sortOrder      Int           @default(0)
+  updatedById    String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  destination Destination? @relation(fields: [destinationId], references: [id], onDelete: SetNull)
+
+  @@index([status, featured, sortOrder])
+  @@index([destinationId])
+  @@map("accommodations")
+}
+
+/// Deals & offers — packages, accommodation and experience promotions
+model Deal {
+  id                 String        @id @default(cuid())
+  title              String
+  slug               String        @unique
+  description        String        @db.Text
+  location           String
+  destinationId      String?
+  price              String
+  priceNote          String?
+  image              String?
+  category           DealCategory  @default(PACKAGE)
+  includes           String[]      @default([])
+  featured           Boolean       @default(false)
+  content            Json?
+  /// Package commercial fields — queryable without parsing JSON
+  packageDestination String?
+  resortName         String?
+  duration           String?
+  travelDates        String?
+  bookBeforeDate     String?
+  bonusValue         String?
+  resortCredit       String?
+  includedFlights    Boolean       @default(false)
+  includedTransfers  Boolean       @default(false)
+  includedMeals      String?
+  includedActivities String[]      @default([])
+  packageTags        String[]      @default([])
+  status             ContentStatus @default(DRAFT)
+  sortOrder          Int           @default(0)
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  destination Destination? @relation(fields: [destinationId], references: [id], onDelete: SetNull)
+
+  @@index([status, featured, category])
+  @@index([destinationId])
+  @@map("deals")
+}
+
+/// Site navigation — primary nav, mega menu items and footer links
+model NavigationItem {
+  id          String             @id @default(cuid())
+  label       String
+  href        String
+  description String?
+  location    NavigationLocation @default(PRIMARY)
+  parentKey   String?
+  icon        String?
+  image       String?
+  featured    Boolean            @default(false)
+  status      ContentStatus      @default(PUBLISHED)
+  sortOrder   Int                @default(0)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  @@index([location, parentKey, sortOrder])
+  @@map("navigation_items")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SUPPORT CENTER
+// ─────────────────────────────────────────────────────────────────────────────
+
+model SupportTicket {
+  id           String         @id @default(cuid())
+  userId       String
+  supplierId   String?
+  assignedToId String?
+  type         TicketType
+  subject      String
+  message      String         @db.Text
+  status       TicketStatus   @default(OPEN)
+  priority     TicketPriority @default(MEDIUM)
+  resolvedAt   DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  user       User      @relation("TicketSubmitter", fields: [userId], references: [id], onDelete: Restrict)
+  supplier   Supplier? @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+  assignedTo User?     @relation("TicketAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  @@index([status, priority])
+  @@index([userId])
+  @@index([supplierId])
+  @@map("support_tickets")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ANALYTICS INTEGRATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+model AnalyticsSnapshot {
+  id             String          @id @default(cuid())
+  date           DateTime        @db.Date
+  visitors       Int             @default(0)
+  pageViews      Int             @default(0)
+  sessions       Int             @default(0)
+  conversionRate Decimal         @default(0) @db.Decimal(5, 2)
+  revenue        Decimal?        @db.Decimal(12, 2)
+  source         AnalyticsSource
+  metadata       Json?
+  createdAt      DateTime        @default(now())
+
+  @@unique([date, source])
+  @@index([date])
+  @@map("analytics_snapshots")
+}
+
+model AnalyticsIntegration {
+  id        String          @id @default(cuid())
+  source    AnalyticsSource @unique
+  enabled   Boolean         @default(false)
+  config    Json?
+  lastSync  DateTime?
+  updatedAt DateTime        @updatedAt
+
+  @@map("analytics_integrations")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONCIERGE ENQUIRIES (migrated from file store)
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Enquiry {
+  id          String   @id @default(cuid())
+  type        String
+  locale      String   @default("en")
+  name        String
+  email       String
+  phone       String?
+  message     String   @db.Text
+  destination String?
+  travelDates String?
+  guests      Int?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([email])
+  @@map("enquiries")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SUPPLIER ENTERPRISE — team, documents, calendar, ops, messaging, automation
+// ─────────────────────────────────────────────────────────────────────────────
+
+model SupplierTeamMember {
+  id          String               @id @default(cuid())
+  supplierId  String
+  userId      String?              @unique
+  email       String
+  firstName   String
+  lastName    String
+  role        SupplierMemberRole   @default(SALES_AGENT)
+  customRole  String?
+  status      SupplierMemberStatus @default(INVITED)
+  permissions Json?
+  invitedAt   DateTime             @default(now())
+  joinedAt    DateTime?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@unique([supplierId, email])
+  @@index([supplierId, status])
+  @@map("supplier_team_members")
+}
+
+model SupplierDocument {
+  id           String         @id @default(cuid())
+  supplierId   String
+  type         DocumentType
+  title        String
+  fileUrl      String
+  version      Int            @default(1)
+  status       DocumentStatus @default(PENDING)
+  expiresAt    DateTime?
+  reviewedAt   DateTime?
+  reviewNote   String?        @db.Text
+  uploadedById String?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId, type])
+  @@index([status, expiresAt])
+  @@map("supplier_documents")
+}
+
+model SupplierCalendarBlock {
+  id         String            @id @default(cuid())
+  supplierId String
+  tourId     String?
+  type       CalendarBlockType @default(BLACKOUT)
+  title      String
+  startAt    DateTime
+  endAt      DateTime
+  allDay     Boolean           @default(false)
+  notes      String?           @db.Text
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  tour     Tour?    @relation(fields: [tourId], references: [id], onDelete: SetNull)
+
+  @@index([supplierId, startAt, endAt])
+  @@map("supplier_calendar_blocks")
+}
+
+model TourAvailability {
+  id          String   @id @default(cuid())
+  supplierId  String
+  tourId      String
+  date        DateTime @db.Date
+  slots       Int      @default(10)
+  booked      Int      @default(0)
+  price       Decimal? @db.Decimal(12, 2)
+  isAvailable Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  tour     Tour     @relation(fields: [tourId], references: [id], onDelete: Cascade)
+
+  @@unique([tourId, date])
+  @@index([supplierId, date])
+  @@map("tour_availabilities")
+}
+
+model SupplierAutomation {
+  id         String            @id @default(cuid())
+  supplierId String
+  trigger    AutomationTrigger
+  name       String
+  enabled    Boolean           @default(true)
+  config     Json?
+  lastRunAt  DateTime?
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId, enabled])
+  @@map("supplier_automations")
+}
+
+model SupplierMessage {
+  id             String         @id @default(cuid())
+  supplierId     String
+  channel        MessageChannel
+  senderId       String?
+  recipientId    String?
+  bookingId      String?
+  subject        String?
+  body           String         @db.Text
+  attachments    Json?
+  readAt         DateTime?
+  parentId       String?
+  createdAt      DateTime       @default(now())
+
+  supplier Supplier          @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  parent   SupplierMessage?  @relation("MessageThread", fields: [parentId], references: [id], onDelete: SetNull)
+  replies  SupplierMessage[] @relation("MessageThread")
+
+  @@index([supplierId, channel, createdAt])
+  @@map("supplier_messages")
+}
+
+model SupplierGuide {
+  id         String         @id @default(cuid())
+  supplierId String
+  firstName  String
+  lastName   String
+  email      String?
+  phone      String?
+  languages  String[]
+  status     ResourceStatus @default(ACTIVE)
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId, status])
+  @@map("supplier_guides")
+}
+
+model SupplierVehicle {
+  id              String         @id @default(cuid())
+  supplierId      String
+  name            String
+  type            String
+  capacity        Int
+  registrationNo  String?
+  status          ResourceStatus @default(ACTIVE)
+  maintenanceNote String?        @db.Text
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId, status])
+  @@map("supplier_vehicles")
+}
+
+model SupplierCustomerNote {
+  id         String   @id @default(cuid())
+  supplierId String
+  travelerId String
+  tags       String[]
+  segment    String?
+  isVip      Boolean  @default(false)
+  notes      String?  @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@unique([supplierId, travelerId])
+  @@index([supplierId, isVip])
+  @@map("supplier_customer_notes")
+}
+
+model SupplierPerformanceLog {
+  id               String   @id @default(cuid())
+  supplierId       String
+  date             DateTime @db.Date
+  healthScore      Decimal  @db.Decimal(5, 2)
+  responseRate     Decimal  @db.Decimal(5, 2)
+  cancellationRate Decimal  @db.Decimal(5, 2)
+  reviewScore      Decimal  @db.Decimal(3, 2)
+  revenue          Decimal? @db.Decimal(12, 2)
+  bookings         Int      @default(0)
+  metadata         Json?
+  createdAt        DateTime @default(now())
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@unique([supplierId, date])
+  @@index([supplierId, date])
+  @@map("supplier_performance_logs")
+}
+
+model SupplierNotificationPreference {
+  id         String  @id @default(cuid())
+  supplierId String  @unique
+  email      Boolean @default(true)
+  sms        Boolean @default(false)
+  push       Boolean @default(true)
+  whatsapp   Boolean @default(false)
+  inApp      Boolean @default(true)
+  booking    Boolean @default(true)
+  payment    Boolean @default(true)
+  review     Boolean @default(true)
+  document   Boolean @default(true)
+  marketing  Boolean @default(false)
+  updatedAt  DateTime @updatedAt
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@map("supplier_notification_preferences")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TRAVELLER ENTERPRISE — profile, trips, wishlist, loyalty, documents, messaging
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum WishlistItemType {
+  TOUR
+  ACTIVITY
+  DESTINATION
+  PACKAGE
+}
+
+enum FavouriteType {
+  TOUR
+  SUPPLIER
+  DESTINATION
+}
+
+enum TravelDocumentType {
+  PASSPORT
+  VISA
+  INSURANCE
+  VACCINATION
+  EMERGENCY
+  OTHER
+}
+
+enum LoyaltyTier {
+  EXPLORER
+  VOYAGER
+  ELITE
+  AMBASSADOR
+}
+
+enum LoyaltyTransactionType {
+  EARN
+  REDEEM
+  BONUS
+  REFERRAL
+  EXPIRE
+  ADJUSTMENT
+}
+
+enum ItineraryStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+enum TravellerMessageChannel {
+  SUPPLIER
+  SUPPORT
+}
+
+enum RefundStatus {
+  REQUESTED
+  PROCESSING
+  COMPLETED
+  REJECTED
+  CANCELLED
+}
+
+enum PaymentMethodType {
+  CARD
+  WALLET
+  BANK
+}
+
+enum CompanionRelation {
+  FAMILY
+  FRIEND
+  PARTNER
+  COLLEAGUE
+  OTHER
+}
+
+enum BookingEventType {
+  CREATED
+  CONFIRMED
+  PAYMENT_RECEIVED
+  VOUCHER_SENT
+  REMINDER
+  CHECK_IN
+  COMPLETED
+  CANCEL_REQUESTED
+  CANCELLED
+  REFUND_INITIATED
+  REFUND_COMPLETED
+  RESCHEDULED
+  NOTE
+}
+
+enum PaymentMode {
+  FULL
+  DEPOSIT
+  PARTIAL
+}
+
+enum CheckoutSessionStatus {
+  ACTIVE
+  EXPIRED
+  COMPLETED
+  ABANDONED
+}
+
+enum PaymentAttemptStatus {
+  PENDING
+  PROCESSING
+  SUCCEEDED
+  FAILED
+  CANCELLED
+}
+
+enum TransactionType {
+  CHARGE
+  REFUND
+  DEPOSIT
+  WALLET_CREDIT
+}
+
+enum PromoDiscountType {
+  PERCENT
+  FIXED
+}
+
+enum BookingLogAction {
+  SESSION_STARTED
+  VALIDATED
+  TRAVELLERS_SAVED
+  COUPON_APPLIED
+  PAYMENT_INTENT_CREATED
+  PAYMENT_SUCCEEDED
+  PAYMENT_FAILED
+  BOOKING_CONFIRMED
+  VOUCHER_ISSUED
+  INVOICE_ISSUED
+  REFUND_REQUESTED
+  AVAILABILITY_UPDATED
+}
+
+model TravellerProfile {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  dateOfBirth           DateTime?
+  nationality           String?
+  passportNumber        String?
+  passportExpiry        DateTime?
+  passportCountry       String?
+  emergencyName         String?
+  emergencyPhone        String?
+  emergencyRelation     String?
+  dietaryPreferences    String[] @default([])
+  accessibilityNeeds    String[] @default([])
+  languagePreferences   String[] @default(["en"])
+  travelStyle           String?
+  budgetRange           String?
+  interests             String[] @default([])
+  preferredDestinations String[] @default([])
+  newsletterOptIn       Boolean  @default(true)
+  marketingOptIn          Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([nationality])
+  @@map("traveller_profiles")
+}
+
+model WishlistItem {
+  id            String           @id @default(cuid())
+  userId        String
+  itemType      WishlistItemType
+  tourId        String?
+  destinationId String?
+  supplierId    String?
+  packageSlug   String?
+  title         String
+  imageUrl      String?
+  priceSnapshot Decimal?         @db.Decimal(12, 2)
+  currency      String           @default("FJD")
+  notes         String?          @db.Text
+  collectionId  String?
+  createdAt     DateTime         @default(now())
+
+  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  collection WishlistCollection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+
+  @@index([userId, itemType])
+  @@index([collectionId])
+  @@map("wishlist_items")
+}
+
+model WishlistCollection {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String?  @db.Text
+  isShared    Boolean  @default(false)
+  shareToken  String?  @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user  User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items WishlistItem[]
+
+  @@index([userId])
+  @@map("wishlist_collections")
+}
+
+model Favourite {
+  id            String        @id @default(cuid())
+  userId        String
+  favouriteType FavouriteType
+  referenceId   String
+  tourId        String?
+  supplierId    String?
+  destinationId String?
+  title         String
+  imageUrl      String?
+  createdAt     DateTime      @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, favouriteType, referenceId])
+  @@index([userId, favouriteType])
+  @@map("favourites")
+}
+
+model TravellerItinerary {
+  id          String          @id @default(cuid())
+  userId      String
+  bookingId   String?
+  title       String
+  destination String?
+  startDate   DateTime?
+  endDate     DateTime?
+  status      ItineraryStatus @default(DRAFT)
+  isShared    Boolean         @default(false)
+  shareToken  String?         @unique
+  notes       String?         @db.Text
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  user  User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  days  ItineraryDay[]
+
+  @@index([userId, status])
+  @@index([startDate])
+  @@map("traveller_itineraries")
+}
+
+model ItineraryDay {
+  id           String   @id @default(cuid())
+  itineraryId  String
+  dayNumber    Int
+  date         DateTime? @db.Date
+  title        String?
+  activities   Json     @default("[]")
+  notes        String?  @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  itinerary TravellerItinerary @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+
+  @@unique([itineraryId, dayNumber])
+  @@index([itineraryId])
+  @@map("itinerary_days")
+}
+
+model TravelDocument {
+  id           String             @id @default(cuid())
+  userId       String
+  type         TravelDocumentType
+  title        String
+  fileUrl      String
+  fileKey      String?
+  mimeType     String?
+  fileSize     Int?
+  issuedAt     DateTime?
+  expiresAt    DateTime?
+  country      String?
+  documentNo   String?
+  isEncrypted  Boolean            @default(true)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+  @@index([expiresAt])
+  @@map("travel_documents")
+}
+
+model TravelCompanion {
+  id           String            @id @default(cuid())
+  userId       String
+  firstName    String
+  lastName     String
+  email        String?
+  phone        String?
+  relation     CompanionRelation @default(FRIEND)
+  dateOfBirth  DateTime?
+  passportNo   String?
+  dietaryNotes String?           @db.Text
+  canBook      Boolean           @default(false)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("travel_companions")
+}
+
+model SavedSearch {
+  id          String   @id @default(cuid())
+  userId      String
+  label       String
+  query       Json
+  alertEnabled Boolean @default(false)
+  lastRunAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("saved_searches")
+}
+
+model TravellerMessage {
+  id         String         @id @default(cuid())
+  userId     String
+  supplierId String?
+  channel    TravellerMessageChannel @default(SUPPLIER)
+  subject    String?
+  body       String         @db.Text
+  isRead     Boolean        @default(false)
+  readAt     DateTime?
+  senderRole String         @default("TRAVELER")
+  metadata   Json?
+  createdAt  DateTime       @default(now())
+
+  user        User                       @relation("TravellerMessages", fields: [userId], references: [id], onDelete: Cascade)
+  attachments TravellerMessageAttachment[]
+
+  @@index([userId, channel, isRead])
+  @@index([supplierId])
+  @@index([createdAt])
+  @@map("traveller_messages")
+}
+
+model TravellerMessageAttachment {
+  id        String   @id @default(cuid())
+  messageId String
+  fileName  String
+  fileUrl   String
+  mimeType  String?
+  fileSize  Int?
+  createdAt DateTime @default(now())
+
+  message TravellerMessage @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  @@index([messageId])
+  @@map("traveller_message_attachments")
+}
+
+model TravellerPaymentMethod {
+  id              String            @id @default(cuid())
+  userId          String
+  type            PaymentMethodType @default(CARD)
+  stripeMethodId  String?           @unique
+  brand           String?
+  last4           String?
+  expMonth        Int?
+  expYear         Int?
+  isDefault       Boolean           @default(false)
+  billingName     String?
+  billingCountry  String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isDefault])
+  @@map("traveller_payment_methods")
+}
+
+model TravellerInvoice {
+  id            String   @id @default(cuid())
+  userId        String
+  bookingId     String?
+  invoiceNumber String   @unique
+  amount        Decimal  @db.Decimal(12, 2)
+  currency      String   @default("FJD")
+  taxAmount     Decimal? @db.Decimal(12, 2)
+  pdfUrl        String?
+  issuedAt      DateTime @default(now())
+  dueAt         DateTime?
+  paidAt        DateTime?
+  metadata      Json?
+  createdAt     DateTime @default(now())
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  booking Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([bookingId])
+  @@map("traveller_invoices")
+}
+
+model TravellerRefund {
+  id          String       @id @default(cuid())
+  userId      String
+  bookingId   String
+  amount      Decimal      @db.Decimal(12, 2)
+  currency    String       @default("FJD")
+  status      RefundStatus @default(REQUESTED)
+  reason      String?      @db.Text
+  processedAt DateTime?
+  stripeRefundId String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+
+  @@index([userId, status])
+  @@index([bookingId])
+  @@map("traveller_refunds")
+}
+
+model LoyaltyAccount {
+  id             String      @id @default(cuid())
+  userId         String      @unique
+  points         Int         @default(0)
+  lifetimePoints Int         @default(0)
+  tier           LoyaltyTier @default(EXPLORER)
+  referralCode   String      @unique @default(cuid())
+  referredById   String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions LoyaltyTransaction[]
+
+  @@map("loyalty_accounts")
+}
+
+model LoyaltyTransaction {
+  id          String                 @id @default(cuid())
+  accountId   String
+  type        LoyaltyTransactionType
+  points      Int
+  description String?
+  bookingId   String?
+  expiresAt   DateTime?
+  createdAt   DateTime               @default(now())
+
+  account LoyaltyAccount @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId, createdAt])
+  @@map("loyalty_transactions")
+}
+
+model TravellerWallet {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  balance   Decimal  @default(0) @db.Decimal(12, 2)
+  currency  String   @default("FJD")
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("traveller_wallets")
+}
+
+model TravellerPromoRedemption {
+  id        String   @id @default(cuid())
+  userId    String
+  code      String
+  discount  Decimal? @db.Decimal(12, 2)
+  redeemedAt DateTime @default(now())
+  expiresAt DateTime?
+  bookingId String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, code])
+  @@index([code])
+  @@map("traveller_promo_redemptions")
+}
+
+model TravellerNotificationPreference {
+  id        String  @id @default(cuid())
+  userId    String  @unique
+  email     Boolean @default(true)
+  sms       Boolean @default(false)
+  push      Boolean @default(true)
+  whatsapp  Boolean @default(false)
+  booking   Boolean @default(true)
+  payment   Boolean @default(true)
+  refund    Boolean @default(true)
+  message   Boolean @default(true)
+  promo     Boolean @default(true)
+  travelAlert Boolean @default(true)
+  reminder  Boolean @default(true)
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("traveller_notification_preferences")
+}
+
+model AuthToken {
+  id        String        @id @default(cuid())
+  userId    String
+  type      AuthTokenType
+  tokenHash String        @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime      @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+  @@index([expiresAt])
+  @@map("auth_tokens")
+}
+
+model LoginSession {
+  id         String   @id @default(cuid())
+  userId     String
+  deviceName String?
+  browser    String?
+  os         String?
+  ipAddress  String?
+  location   String?
+  isCurrent  Boolean  @default(false)
+  lastActive DateTime @default(now())
+  createdAt  DateTime @default(now())
+  revokedAt  DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, revokedAt])
+  @@map("login_sessions")
+}
+
+model BookingEvent {
+  id          String           @id @default(cuid())
+  bookingId   String
+  eventType   BookingEventType
+  title       String
+  description String?          @db.Text
+  metadata    Json?
+  occurredAt  DateTime         @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId, occurredAt])
+  @@map("booking_events")
+}
+
+model ReviewMedia {
+  id        String   @id @default(cuid())
+  reviewId  String
+  userId    String
+  mediaType String   @default("photo")
+  url       String
+  caption   String?
+  createdAt DateTime @default(now())
+
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([reviewId])
+  @@map("review_media")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CHECKOUT & PAYMENTS ENTERPRISE
+// ─────────────────────────────────────────────────────────────────────────────
+
+model CheckoutSession {
+  id            String                @id @default(cuid())
+  tourSlug      String
+  tourId        String?
+  supplierId    String?
+  travelerId    String?
+  status        CheckoutSessionStatus @default(ACTIVE)
+  expiresAt     DateTime
+  selection     Json?
+  travellers    Json?
+  pricing       Json?
+  promoCode     String?
+  paymentMode   PaymentMode           @default(FULL)
+  idempotencyKey String?              @unique
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+
+  booking       Booking?
+  paymentAttempts PaymentAttempt[]
+
+  @@index([status, expiresAt])
+  @@index([tourSlug])
+  @@map("checkout_sessions")
+}
+
+model BookingItem {
+  id          String   @id @default(cuid())
+  bookingId   String
+  itemType    String
+  title       String
+  quantity    Int      @default(1)
+  unitPrice   Decimal  @db.Decimal(12, 2)
+  totalPrice  Decimal  @db.Decimal(12, 2)
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@map("booking_items")
+}
+
+model BookingTraveller {
+  id           String    @id @default(cuid())
+  bookingId    String
+  isPrimary    Boolean   @default(false)
+  firstName    String
+  lastName     String
+  email        String?
+  phone        String?
+  nationality  String?
+  dateOfBirth  DateTime?
+  age          Int?
+  passportNo   String?
+  dietaryNotes String?   @db.Text
+  accessibilityNeeds String? @db.Text
+  createdAt    DateTime  @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@map("booking_travellers")
+}
+
+model PaymentAttempt {
+  id              String               @id @default(cuid())
+  bookingId       String?
+  checkoutSessionId String?
+  paymentId       String?
+  stripeIntentId  String?              @unique
+  idempotencyKey  String               @unique
+  amount          Decimal              @db.Decimal(12, 2)
+  currency        String               @default("FJD")
+  status          PaymentAttemptStatus @default(PENDING)
+  paymentMethod   String?
+  failureMessage  String?
+  metadata        Json?
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime             @updatedAt
+
+  booking         Booking?         @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  checkoutSession CheckoutSession? @relation(fields: [checkoutSessionId], references: [id], onDelete: SetNull)
+  payment         Payment?         @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([checkoutSessionId])
+  @@index([status])
+  @@map("payment_attempts")
+}
+
+model Transaction {
+  id            String          @id @default(cuid())
+  bookingId     String
+  type          TransactionType
+  amount        Decimal         @db.Decimal(12, 2)
+  currency      String          @default("FJD")
+  stripeChargeId String?
+  reference     String?
+  metadata      Json?
+  createdAt     DateTime        @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Restrict)
+
+  @@index([bookingId, type])
+  @@map("transactions")
+}
+
+model BookingInvoice {
+  id            String   @id @default(cuid())
+  bookingId     String   @unique
+  invoiceNumber String   @unique
+  subtotal      Decimal  @db.Decimal(12, 2)
+  taxAmount     Decimal  @db.Decimal(12, 2)
+  serviceFee    Decimal  @db.Decimal(12, 2)
+  discountAmount Decimal @db.Decimal(12, 2)
+  totalAmount   Decimal  @db.Decimal(12, 2)
+  currency      String   @default("FJD")
+  pdfUrl        String?
+  issuedAt      DateTime @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceNumber])
+  @@map("booking_invoices")
+}
+
+model BookingVoucher {
+  id            String   @id @default(cuid())
+  bookingId     String   @unique
+  voucherNumber String   @unique
+  qrCodeData    String
+  pdfUrl        String?
+  issuedAt      DateTime @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([voucherNumber])
+  @@map("booking_vouchers")
+}
+
+model PromoCode {
+  id            String            @id @default(cuid())
+  code          String            @unique
+  description   String?
+  discountType  PromoDiscountType
+  discountValue Decimal           @db.Decimal(12, 2)
+  minAmount     Decimal?          @db.Decimal(12, 2)
+  maxUses       Int?
+  usedCount     Int               @default(0)
+  active        Boolean           @default(true)
+  expiresAt     DateTime?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@index([active, expiresAt])
+  @@map("promo_codes")
+}
+
+model Coupon {
+  id            String            @id @default(cuid())
+  code          String            @unique
+  description   String?
+  discountType  PromoDiscountType
+  discountValue Decimal           @db.Decimal(12, 2)
+  minAmount     Decimal?          @db.Decimal(12, 2)
+  maxUses       Int?
+  usedCount     Int               @default(0)
+  active        Boolean           @default(true)
+  expiresAt     DateTime?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@index([active, expiresAt])
+  @@map("coupons")
+}
+
+model BookingLog {
+  id        String           @id @default(cuid())
+  bookingId String?
+  sessionId String?
+  action    BookingLogAction
+  message   String?
+  metadata  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime         @default(now())
+
+  booking Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  @@index([bookingId, createdAt])
+  @@index([sessionId])
+  @@map("booking_logs")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CMS — My Fiji Tour Content Management System
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum AdminStaffRole {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  CONTENT_MANAGER
+  SUPPORT_MANAGER
+}
+
+enum CmsEntityType {
+  HOMEPAGE
+  DESTINATION
+  TOUR
+  TRANSPORT
+  GUIDE
+  FAQ
+  TESTIMONIAL
+  BANNER
+  ACCOMMODATION
+  DEAL
+  NAVIGATION
+  PAGE
+  POST
+}
+
+enum DealCategory {
+  PACKAGE
+  ACCOMMODATION
+  EXPERIENCE
+}
+
+enum NavigationLocation {
+  PRIMARY
+  MEGA_MENU
+  FOOTER
+}
+
+enum SupplierContentType {
+  TOUR
+  TRANSPORT
+  DESCRIPTION
+  IMAGE
+  GALLERY
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REVISION_REQUESTED
+}
+
+/// Admin staff role assignment — granular CMS & ops permissions
+model AdminStaffProfile {
+  id          String         @id @default(cuid())
+  userId      String         @unique
+  staffRole   AdminStaffRole @default(CONTENT_MANAGER)
+  permissions Json?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([staffRole])
+  @@map("admin_staff_profiles")
+}
+
+/// Polymorphic SEO metadata — one record per CMS entity
+model SeoMeta {
+  id              String        @id @default(cuid())
+  entityType      CmsEntityType
+  entityId        String
+  metaTitle       String?
+  metaDescription String?       @db.Text
+  ogTitle         String?
+  ogDescription   String?       @db.Text
+  ogImage         String?
+  canonicalUrl    String?
+  schemaMarkup    Json?
+  noIndex         Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@unique([entityType, entityId])
+  @@index([entityType])
+  @@map("seo_meta")
+}
+
+/// Cloudinary-backed media library
+model MediaAsset {
+  id           String   @id @default(cuid())
+  cloudinaryId String   @unique
+  publicId     String
+  url          String
+  secureUrl    String
+  format       String?
+  resourceType String   @default("image")
+  width        Int?
+  height       Int?
+  bytes        Int?
+  folder       String   @default("mft")
+  altText      String?
+  caption      String?
+  tags         String[] @default([])
+  isFavorite   Boolean  @default(false) @map("is_favorite")
+  uploadedById String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  uploadedBy User? @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+
+  @@index([folder, createdAt])
+  @@index([uploadedById])
+  @@index([isFavorite])
+  @@map("media_assets")
+}
+
+/// Curated traveller testimonials for homepage & landing pages
+model Testimonial {
+  id          String        @id @default(cuid())
+  authorName  String
+  authorTitle String?
+  authorImage String?
+  location    String?
+  content     String        @db.Text
+  rating      Int           @default(5)
+  featured    Boolean       @default(false)
+  status      ContentStatus @default(DRAFT)
+  sortOrder   Int           @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, featured, sortOrder])
+  @@map("testimonials")
+}
+
+/// Supplier-submitted content awaiting platform approval
+model SupplierContentSubmission {
+  id           String              @id @default(cuid())
+  supplierId   String
+  contentType  SupplierContentType
+  entityId     String?
+  title        String
+  payload      Json
+  status       ApprovalStatus      @default(PENDING)
+  reviewNote   String?             @db.Text
+  reviewedById String?
+  reviewedAt   DateTime?
+  submittedAt  DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+
+  supplier   Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  reviewedBy User?    @relation("SubmissionReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([supplierId, status])
+  @@index([contentType, status])
+  @@index([submittedAt])
+  @@map("supplier_content_submissions")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VISA INTELLIGENCE — production visa rules, documents & entry guides
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum VisaType {
+  VISA_FREE
+  VISA_ON_ARRIVAL
+  EVISA
+  VISA_REQUIRED
+}
+
+model Country {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  slug      String   @unique
+  flag      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  visaRules                  VisaRule[]
+  travelDocumentRequirements TravelDocumentRequirement[]
+
+  @@index([name])
+  @@index([slug])
+  @@map("countries")
+}
+
+model VisaRule {
+  id                 String   @id @default(cuid())
+  nationalityId      String
+  destinationCountry String   @default("FJ")
+  visaType           VisaType
+  stayDuration       String
+  processingTime     String
+  entryType          String?
+  entryConditions    String?  @db.Text
+  notes              String?  @db.Text
+  recommendations    Json?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  nationality Country @relation(fields: [nationalityId], references: [id], onDelete: Cascade)
+
+  @@unique([nationalityId, destinationCountry])
+  @@index([destinationCountry])
+  @@index([visaType])
+  @@map("visa_rules")
+}
+
+model TravelDocumentRequirement {
+  id                     String  @id @default(cuid())
+  nationalityId          String  @unique
+  passportValidity       String
+  returnTicketRequired   Boolean @default(true)
+  hotelBookingRequired   Boolean @default(true)
+  proofOfFundsRequired   Boolean @default(false)
+  insuranceRequired      Boolean @default(false)
+  passportPhotosRequired Boolean @default(false)
+  bankStatementRequired  Boolean @default(false)
+  additionalDocuments    Json?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  nationality Country @relation(fields: [nationalityId], references: [id], onDelete: Cascade)
+
+  @@map("travel_document_requirements")
+}
+
+model EntryGuide {
+  id                  String   @id @default(cuid())
+  destinationCountry  String   @unique @default("FJ")
+  arrivalProcess      String   @db.Text
+  immigrationProcess  String   @db.Text
+  customsInfo         String   @db.Text
+  airportInfo         String   @db.Text
+  healthRequirements  String   @db.Text
+  travelAdvice        String   @db.Text
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("entry_guides")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// WordPress-like CMS entities (synced with supabase/migrations)
+// ─────────────────────────────────────────────────────────────────────────────
+
+model CmsCategory {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?
+  parentId    String?       @map("parent_id")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  parent      CmsCategory?  @relation("CmsCategoryTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children    CmsCategory[] @relation("CmsCategoryTree")
+  posts       CmsPost[]
+
+  @@map("cms_categories")
+}
+
+model CmsTag {
+  id        String       @id @default(cuid())
+  name      String
+  slug      String       @unique
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @updatedAt @map("updated_at")
+  posts     CmsPostTag[]
+
+  @@map("cms_tags")
+}
+
+model CmsPage {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  excerpt       String?       @db.Text
+  content       Json          @default("{}")
+  contentHtml   String?       @map("content_html") @db.Text
+  featuredImage String?       @map("featured_image")
+  status        ContentStatus @default(DRAFT)
+  publishedAt   DateTime?     @map("published_at")
+  scheduledAt   DateTime?     @map("scheduled_at")
+  authorId      String?       @map("author_id")
+  parentId      String?       @map("parent_id")
+  template      String?       @default("default")
+  seo           Json          @default("{}")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+  parent        CmsPage?      @relation("CmsPageTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children      CmsPage[]     @relation("CmsPageTree")
+
+  @@index([status])
+  @@map("cms_pages")
+}
+
+model CmsPost {
+  id              String        @id @default(cuid())
+  title           String
+  slug            String        @unique
+  excerpt         String?       @db.Text
+  content         Json          @default("{}")
+  contentHtml     String?       @map("content_html") @db.Text
+  featuredImage   String?       @map("featured_image")
+  categoryId      String?       @map("category_id")
+  authorId        String?       @map("author_id")
+  status          ContentStatus @default(DRAFT)
+  publishedAt     DateTime?     @map("published_at")
+  scheduledAt     DateTime?     @map("scheduled_at")
+  featured        Boolean       @default(false)
+  readingTimeMin  Int           @default(1) @map("reading_time_min")
+  seo             Json          @default("{}")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  category        CmsCategory?  @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  tags            CmsPostTag[]
+
+  @@index([status])
+  @@index([categoryId])
+  @@index([featured])
+  @@map("cms_posts")
+}
+
+model CmsPostTag {
+  postId String  @map("post_id")
+  tagId  String  @map("tag_id")
+  post   CmsPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    CmsTag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@map("cms_post_tags")
+}
+
+model CmsRevision {
+  id          String   @id @default(cuid())
+  entityType  String   @map("entity_type")
+  entityId    String   @map("entity_id")
+  title       String?
+  content     Json?
+  contentHtml String?  @map("content_html") @db.Text
+  authorId    String?  @map("author_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([entityType, entityId, createdAt(sort: Desc)])
+  @@map("cms_revisions")
+}
+
+model CmsSiteSetting {
+  key       String   @id
+  value     Json     @default("{}")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  updatedBy String?  @map("updated_by")
+
+  @@map("cms_settings")
+}
+
+model CmsRedirect {
+  id         String   @id @default(cuid())
+  fromPath   String   @unique @map("from_path")
+  toPath     String   @map("to_path")
+  statusCode Int      @default(301) @map("status_code")
+  isActive   Boolean  @default(true) @map("is_active")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("cms_redirects")
+}

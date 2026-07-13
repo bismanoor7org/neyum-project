@@ -1,0 +1,35 @@
+[
+  {
+    "code": "VOYAGER15",
+    "description": "15% off for Voyager members",
+    "discountType": "PERCENT",
+    "discountValue": 15,
+    "minAmount": 200,
+    "maxUses": 500,
+    "usedCount": 42,
+    "active": true,
+    "expiresAt": "2026-12-31T23:59:59.000Z"
+  },
+  {
+    "code": "FIJI100",
+    "description": "FJD 100 off your booking",
+    "discountType": "FIXED",
+    "discountValue": 100,
+    "minAmount": 300,
+    "maxUses": 200,
+    "usedCount": 18,
+    "active": true,
+    "expiresAt": "2026-09-30T23:59:59.000Z"
+  },
+  {
+    "code": "EARLYBIRD",
+    "description": "Early bird FJD 200 credit",
+    "discountType": "FIXED",
+    "discountValue": 200,
+    "minAmount": 500,
+    "maxUses": 100,
+    "usedCount": 7,
+    "active": true,
+    "expiresAt": "2026-08-31T23:59:59.000Z"
+  }
+]

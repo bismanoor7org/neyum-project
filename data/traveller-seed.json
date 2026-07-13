@@ -1,0 +1,201 @@
+{
+  "dashboard": {
+    "metrics": {
+      "upcomingTrips": 2,
+      "activeBookings": 3,
+      "wishlistCount": 12,
+      "loyaltyPoints": 2840,
+      "loyaltyTier": "VOYAGER",
+      "walletBalance": 150,
+      "unreadMessages": 4,
+      "unreadNotifications": 6,
+      "countriesVisited": 3,
+      "toursCompleted": 8,
+      "totalSpent": 12450
+    },
+    "upcomingTrips": [
+      {
+        "id": "bk-up-1",
+        "bookingNumber": "MFT-2026-2088",
+        "tourName": "Sunset Lagoon Cruise",
+        "supplierName": "Pacific Pearl Tours",
+        "travelDate": "2026-07-01T00:00:00.000Z",
+        "guestCount": 2,
+        "amount": 890,
+        "bookingStatus": "CONFIRMED",
+        "imageUrl": null
+      },
+      {
+        "id": "bk-up-2",
+        "bookingNumber": "MFT-2026-2091",
+        "tourName": "Village Cultural Experience",
+        "supplierName": "Fiji Heritage Journeys",
+        "travelDate": "2026-07-14T00:00:00.000Z",
+        "guestCount": 4,
+        "amount": 1680,
+        "bookingStatus": "CONFIRMED",
+        "imageUrl": null
+      }
+    ],
+    "recentActivity": [
+      { "id": "a1", "type": "booking", "title": "Booking confirmed", "detail": "Sunset Lagoon Cruise · MFT-2026-2088", "at": "2026-06-10T10:00:00.000Z" },
+      { "id": "a2", "type": "wishlist", "title": "Added to wishlist", "detail": "Island Snorkel Safari", "at": "2026-06-09T10:00:00.000Z" },
+      { "id": "a3", "type": "loyalty", "title": "Earned 120 points", "detail": "Village Cultural Experience review", "at": "2026-06-08T10:00:00.000Z" },
+      { "id": "a4", "type": "message", "title": "New message", "detail": "Pacific Pearl Tours — pickup details", "at": "2026-06-07T10:00:00.000Z" }
+    ],
+    "recommendations": [
+      { "id": "r1", "title": "Private Island Day Trip", "reason": "Based on your lagoon cruise bookings", "price": 1290, "rating": 4.9, "imageUrl": null },
+      { "id": "r2", "title": "Fijian Cooking Masterclass", "reason": "Matches your cultural interests", "price": 185, "rating": 4.8, "imageUrl": null },
+      { "id": "r3", "title": "Yasawa Island Hopping", "reason": "Trending with Voyager members", "price": 2450, "rating": 4.95, "imageUrl": null }
+    ],
+    "personalizedOffers": [
+      { "id": "o1", "code": "VOYAGER15", "title": "15% off your next island tour", "expiresAt": "2026-07-15T00:00:00.000Z" },
+      { "id": "o2", "code": "EARLYBIRD", "title": "Early bird — FJD 200 credit", "expiresAt": "2026-06-29T00:00:00.000Z" }
+    ],
+    "savedSearches": [
+      { "id": "s1", "label": "Denarau day trips", "query": { "destination": "denarau", "guests": 2 }, "alertEnabled": true },
+      { "id": "s2", "label": "Cultural experiences", "query": { "category": "culture" }, "alertEnabled": false }
+    ],
+    "quickActions": [
+      { "id": "qa1", "label": "Book new experience", "href": "/search" },
+      { "id": "qa2", "label": "View vouchers", "href": "/traveller/bookings" },
+      { "id": "qa3", "label": "Contact concierge", "href": "/traveller/support" },
+      { "id": "qa4", "label": "Plan a trip", "href": "/traveller/trips" }
+    ],
+    "travelStatus": {
+      "nextDeparture": "2026-07-01T00:00:00.000Z",
+      "documentsExpiring": 1,
+      "pendingRefunds": 0,
+      "openSupportTickets": 1
+    },
+    "spendingChart": [
+      { "label": "Jan", "value": 1200 },
+      { "label": "Feb", "value": 0 },
+      { "label": "Mar", "value": 3400 },
+      { "label": "Apr", "value": 890 },
+      { "label": "May", "value": 2100 },
+      { "label": "Jun", "value": 4860 }
+    ],
+    "tripsChart": [
+      { "label": "2023", "value": 2 },
+      { "label": "2024", "value": 3 },
+      { "label": "2025", "value": 2 },
+      { "label": "2026", "value": 1 }
+    ]
+  },
+  "bookings": [
+    {
+      "id": "bk-up-1",
+      "bookingNumber": "MFT-2026-2088",
+      "tourName": "Sunset Lagoon Cruise",
+      "supplierName": "Pacific Pearl Tours",
+      "travelDate": "2026-07-01T00:00:00.000Z",
+      "guestCount": 2,
+      "amount": 890,
+      "bookingStatus": "CONFIRMED",
+      "paymentStatus": "PAID",
+      "imageUrl": null,
+      "timeline": [
+        { "id": "e1", "type": "CREATED", "title": "Booking created", "at": "2026-05-20T10:00:00.000Z" },
+        { "id": "e2", "type": "CONFIRMED", "title": "Booking confirmed", "at": "2026-05-20T10:05:00.000Z" },
+        { "id": "e3", "type": "VOUCHER_SENT", "title": "Voucher sent to email", "at": "2026-05-20T10:06:00.000Z" }
+      ],
+      "refund": null
+    },
+    {
+      "id": "bk-done-1",
+      "bookingNumber": "MFT-2025-1842",
+      "tourName": "Island Snorkel Safari",
+      "supplierName": "Coral Reef Adventures",
+      "travelDate": "2025-04-15T00:00:00.000Z",
+      "guestCount": 2,
+      "amount": 620,
+      "bookingStatus": "COMPLETED",
+      "paymentStatus": "PAID",
+      "imageUrl": null,
+      "timeline": [],
+      "refund": null
+    }
+  ],
+  "wishlist": [
+    { "id": "w1", "itemType": "TOUR", "title": "Island Snorkel Safari", "priceSnapshot": 620, "currency": "FJD", "imageUrl": null, "collection": "Summer 2026" },
+    { "id": "w2", "itemType": "DESTINATION", "title": "Yasawa Islands", "priceSnapshot": null, "currency": "FJD", "imageUrl": null, "collection": null },
+    { "id": "w3", "itemType": "PACKAGE", "title": "7-Day Luxury Fiji Escape", "priceSnapshot": 8900, "currency": "FJD", "imageUrl": null, "collection": "Honeymoon" }
+  ],
+  "favourites": [
+    { "id": "f1", "favouriteType": "TOUR", "title": "Sunset Lagoon Cruise", "imageUrl": null },
+    { "id": "f2", "favouriteType": "SUPPLIER", "title": "Pacific Pearl Tours", "imageUrl": null },
+    { "id": "f3", "favouriteType": "DESTINATION", "title": "Mamanuca Islands", "imageUrl": null }
+  ],
+  "messages": [
+    { "id": "m1", "channel": "SUPPLIER", "subject": "Pickup details — Sunset Lagoon Cruise", "body": "Your pickup is confirmed at 4:30 PM from Denarau Marina.", "isRead": false, "createdAt": "2026-06-10T09:00:00.000Z" },
+    { "id": "m2", "channel": "SUPPORT", "subject": "Concierge follow-up", "body": "We've updated your itinerary with restaurant recommendations.", "isRead": true, "createdAt": "2026-06-09T09:00:00.000Z" }
+  ],
+  "notifications": [
+    { "id": "n1", "title": "Booking confirmed", "message": "Sunset Lagoon Cruise is confirmed for 1 Jul 2026.", "type": "BOOKING", "isRead": false, "at": "2026-06-10T08:00:00.000Z" },
+    { "id": "n2", "title": "New offer", "message": "VOYAGER15 — 15% off island tours this month.", "type": "SYSTEM", "isRead": false, "at": "2026-06-09T08:00:00.000Z" },
+    { "id": "n3", "title": "Refund processed", "message": "FJD 200 credit added to your wallet.", "type": "REFUND", "isRead": true, "at": "2026-06-01T08:00:00.000Z" }
+  ],
+  "loyalty": {
+    "points": 2840,
+    "lifetimePoints": 5120,
+    "tier": "VOYAGER",
+    "referralCode": "FIJI-VOYAGER-42",
+    "nextTier": "ELITE",
+    "pointsToNextTier": 1160,
+    "transactions": [
+      { "id": "lt1", "type": "EARN", "points": 120, "description": "Review — Village Cultural Experience", "at": "2026-06-08T10:00:00.000Z" },
+      { "id": "lt2", "type": "BONUS", "points": 200, "description": "VOYAGER tier welcome bonus", "at": "2026-05-01T10:00:00.000Z" }
+    ],
+    "promoCodes": [
+      { "code": "VOYAGER15", "discount": "15%", "expiresAt": "2026-07-15T00:00:00.000Z" }
+    ]
+  },
+  "trips": [
+    {
+      "id": "trip-1",
+      "title": "Fiji Honeymoon — July 2026",
+      "destination": "Mamanuca & Coral Coast",
+      "startDate": "2026-07-01T00:00:00.000Z",
+      "endDate": "2026-07-10T00:00:00.000Z",
+      "status": "ACTIVE",
+      "days": [
+        { "dayNumber": 1, "title": "Arrival & Sunset Cruise", "activities": ["Airport transfer", "Sunset Lagoon Cruise"] },
+        { "dayNumber": 2, "title": "Island relaxation", "activities": ["Resort day", "Spa"] }
+      ]
+    }
+  ],
+  "payments": {
+    "walletBalance": 150,
+    "currency": "FJD",
+    "methods": [
+      { "id": "pm1", "type": "CARD", "brand": "Visa", "last4": "4242", "isDefault": true }
+    ],
+    "invoices": [
+      { "id": "inv1", "invoiceNumber": "INV-2026-1042", "amount": 890, "issuedAt": "2026-05-20T10:00:00.000Z", "bookingNumber": "MFT-2026-2088" }
+    ],
+    "refunds": []
+  },
+  "documents": [
+    { "id": "d1", "type": "PASSPORT", "title": "Australian Passport", "expiresAt": "2027-03-15T00:00:00.000Z", "country": "AU" },
+    { "id": "d2", "type": "INSURANCE", "title": "Travel Insurance Policy", "expiresAt": "2026-12-31T00:00:00.000Z", "country": null }
+  ],
+  "support": {
+    "tickets": [
+      { "id": "t1", "subject": "Restaurant recommendations near Denarau", "status": "OPEN", "priority": "MEDIUM", "createdAt": "2026-06-09T12:00:00.000Z" }
+    ],
+    "liveChatAvailable": true
+  },
+  "security": {
+    "twoFactorEnabled": false,
+    "sessions": [
+      { "id": "s1", "deviceName": "Windows PC", "browser": "Chrome", "location": "Sydney, AU", "isCurrent": true, "lastActive": "2026-06-10T10:00:00.000Z" }
+    ]
+  },
+  "reviews": [
+    { "id": "rv1", "tourName": "Island Snorkel Safari", "rating": 5, "review": "Incredible reefs and guides.", "status": "APPROVED", "createdAt": "2025-04-20T10:00:00.000Z" }
+  ],
+  "companions": [
+    { "id": "c1", "firstName": "Jane", "lastName": "Explorer", "relation": "PARTNER", "email": "jane@example.com" }
+  ]
+}

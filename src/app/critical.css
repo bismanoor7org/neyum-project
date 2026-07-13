@@ -1,0 +1,560 @@
+/**
+ * Critical theme tokens — loaded before Tailwind bundle so colors paint instantly.
+ * Values mirror globals.css :root (do not change palette independently).
+ */
+:root {
+  --background: #ffffff;
+  --foreground: #0f2f35;
+  --foreground-muted: #667085;
+  --navy: #0f2f35;
+  --navy-deep: #0a2228;
+  --navy-light: #1a4a52;
+  --gold: #d4af37;
+  --gold-light: #e4c76b;
+  --gold-deep: #b8962e;
+  --gold-eyebrow: #d4af37;
+  --champagne: #f0e8d4;
+  --cream: #ffffff;
+  --cream-alt: #fafaf8;
+  --cream-muted: #fafaf8;
+  --cream-dark: #e8e2d8;
+  --sand: #fafaf8;
+  --ocean: #ffffff;
+  --coastal: #ffffff;
+  --coral: #c47a62;
+  --white: #ffffff;
+  --teal: #1a4a52;
+  --ocean-accent: #2dd4bf;
+  --lagoon-accent: #38bdf8;
+  --foreground-secondary: #667085;
+  --success: #10b981;
+  --border: #e8e2d8;
+  --hover-bg: #f5f1e8;
+  --card-surface: #ffffff;
+  --card-elevated: #ffffff;
+
+  --gold-rgb: 212, 175, 55;
+  --gold-light-rgb: 228, 199, 107;
+  --navy-rgb: 15, 47, 53;
+  --navy-deep-rgb: 10, 34, 40;
+
+  --gradient-gold: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 46%, var(--gold-deep) 100%);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-light: var(--navy-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-cream-alt: var(--cream-alt);
+  --color-cream-muted: var(--cream-muted);
+  --color-cream-dark: var(--cream-dark);
+  --color-sand: var(--sand);
+  --color-ocean: var(--ocean);
+  --color-coastal: var(--coastal);
+  --color-coral: var(--coral);
+  --color-teal: var(--teal);
+  --color-white: var(--white);
+
+  --section-py: 6rem;
+  --section-py-compact: 5rem;
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgba(var(--navy-deep-rgb), 0.04), 0 8px 24px rgba(var(--navy-deep-rgb), 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(var(--navy-deep-rgb), 0.06), 0 20px 48px rgba(var(--navy-deep-rgb), 0.1);
+  --shadow-editorial: 0 12px 40px rgba(var(--navy-deep-rgb), 0.08), 0 28px 64px rgba(var(--navy-deep-rgb), 0.1);
+  --shadow-widget: 0 16px 48px rgba(var(--navy-deep-rgb), 0.1), 0 4px 16px rgba(var(--navy-deep-rgb), 0.05);
+  --shadow-glass: 0 8px 32px rgba(var(--navy-rgb), 0.06);
+
+  /* Fiji Luxury navigation — mirrors globals.css for instant hero chrome paint */
+  --fiji-ocean-deep: #0a2228;
+  --fiji-ocean: #0f2f35;
+  --fiji-lagoon: #1a4a52;
+  --fiji-lagoon-soft: #3d7a82;
+  --fiji-nav-glass: color-mix(in srgb, var(--white) 88%, var(--cream) 12%);
+  --fiji-nav-border: var(--border);
+  --shadow-fiji-nav:
+    0 4px 24px rgba(var(--navy-deep-rgb), 0.06),
+    0 1px 3px rgba(var(--navy-deep-rgb), 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+html.dark {
+  --background: #081b22;
+  --foreground: #ffffff;
+  --foreground-secondary: #d6e3f0;
+  --foreground-muted: #9fb3c8;
+  --navy: #0d2430;
+  --navy-deep: #081b22;
+  --navy-light: #163847;
+  --gold: #d4af37;
+  --gold-light: #e0c878;
+  --gold-deep: #b8942f;
+  --gold-rgb: 212, 175, 55;
+  --gold-light-rgb: 224, 200, 120;
+  --navy-rgb: 13, 36, 48;
+  --navy-deep-rgb: 8, 27, 34;
+  --cream: #081b22;
+  --cream-alt: #0d2430;
+  --cream-muted: #0d2430;
+  --cream-dark: #081b22;
+  --sand: #0d2430;
+  --ocean: #0d2430;
+  --coastal: #112b39;
+  --card-surface: #112b39;
+  --card-elevated: #163847;
+  --border: rgba(255, 255, 255, 0.08);
+  --hover-bg: #163847;
+  --teal: #2dd4bf;
+  --ocean-accent: #2dd4bf;
+  --lagoon-accent: #38bdf8;
+  --success: #10b981;
+  --fiji-nav-glass: rgba(8, 27, 34, 0.68);
+  --fiji-nav-border: rgba(255, 255, 255, 0.08);
+  --shadow-card:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    0 8px 24px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-card-hover:
+    0 4px 12px rgba(0, 0, 0, 0.22),
+    0 20px 48px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-light: var(--navy-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-cream-alt: var(--cream-alt);
+  --color-cream-muted: var(--cream-muted);
+  --color-cream-dark: var(--cream-dark);
+  --color-sand: var(--sand);
+  --color-ocean: var(--ocean);
+  --color-coastal: var(--coastal);
+  --color-teal: var(--teal);
+  --color-ocean-accent: var(--ocean-accent);
+  --color-lagoon-accent: var(--lagoon-accent);
+  --color-success: var(--success);
+  color-scheme: dark;
+}
+
+html {
+  background-color: var(--background);
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+}
+
+/* Instant fallbacks for Tailwind color utilities used above the fold */
+.bg-background {
+  background-color: var(--color-background);
+}
+.bg-cream {
+  background-color: var(--color-cream);
+}
+.bg-cream-alt {
+  background-color: var(--color-cream-alt);
+}
+.bg-sand {
+  background-color: var(--color-sand);
+}
+.bg-ocean {
+  background-color: var(--color-ocean);
+}
+.bg-coastal {
+  background-color: var(--color-coastal);
+}
+.bg-navy {
+  background-color: var(--color-navy);
+}
+.bg-navy-deep {
+  background-color: var(--color-navy-deep);
+}
+.bg-white {
+  background-color: var(--color-white);
+}
+.bg-gold {
+  background-color: var(--color-gold);
+}
+.bg-teal {
+  background-color: var(--color-teal);
+}
+.text-foreground {
+  color: var(--color-foreground);
+}
+.text-navy {
+  color: var(--color-navy);
+}
+.text-gold {
+  color: var(--color-gold);
+}
+.text-white {
+  color: var(--color-white);
+}
+.text-teal {
+  color: var(--color-teal);
+}
+.text-coral {
+  color: var(--color-coral);
+}
+.border-gold\/25 {
+  border-color: color-mix(in srgb, var(--color-gold) 25%, transparent);
+}
+.border-gold\/30 {
+  border-color: color-mix(in srgb, var(--color-gold) 30%, transparent);
+}
+.border-gold\/40 {
+  border-color: color-mix(in srgb, var(--color-gold) 40%, transparent);
+}
+.border-white\/8 {
+  border-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+.border-white\/12 {
+  border-color: color-mix(in srgb, var(--color-white) 12%, transparent);
+}
+.border-white\/15 {
+  border-color: color-mix(in srgb, var(--color-white) 15%, transparent);
+}
+.border-white\/20 {
+  border-color: color-mix(in srgb, var(--color-white) 20%, transparent);
+}
+.bg-gold\/10 {
+  background-color: color-mix(in srgb, var(--color-gold) 10%, transparent);
+}
+.bg-gold\/15 {
+  background-color: color-mix(in srgb, var(--color-gold) 15%, transparent);
+}
+.bg-white\/5 {
+  background-color: color-mix(in srgb, var(--color-white) 5%, transparent);
+}
+.bg-white\/8 {
+  background-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+.bg-white\/10 {
+  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+}
+.bg-white\/92 {
+  background-color: color-mix(in srgb, var(--color-white) 92%, transparent);
+}
+.bg-navy\/80 {
+  background-color: color-mix(in srgb, var(--color-navy) 80%, transparent);
+}
+.text-white\/45 {
+  color: color-mix(in srgb, var(--color-white) 45%, transparent);
+}
+.text-white\/55 {
+  color: color-mix(in srgb, var(--color-white) 55%, transparent);
+}
+.text-white\/60 {
+  color: color-mix(in srgb, var(--color-white) 60%, transparent);
+}
+.text-white\/75 {
+  color: color-mix(in srgb, var(--color-white) 75%, transparent);
+}
+.text-white\/90 {
+  color: color-mix(in srgb, var(--color-white) 90%, transparent);
+}
+.text-foreground\/65 {
+  color: color-mix(in srgb, var(--color-foreground) 65%, transparent);
+}
+
+html.dark .bg-white {
+  background-color: var(--card-elevated);
+}
+
+html.dark .bg-white\/80 {
+  background-color: color-mix(in srgb, var(--card-elevated) 80%, transparent);
+}
+
+html.dark .bg-white\/85 {
+  background-color: color-mix(in srgb, var(--card-elevated) 85%, transparent);
+}
+
+html.dark .bg-white\/88 {
+  background-color: color-mix(in srgb, var(--card-elevated) 88%, transparent);
+}
+
+html.dark .bg-white\/90 {
+  background-color: color-mix(in srgb, var(--card-elevated) 90%, transparent);
+}
+
+html.dark .bg-white\/92 {
+  background-color: color-mix(in srgb, var(--card-elevated) 92%, transparent);
+}
+
+html.dark .bg-white\/95 {
+  background-color: color-mix(in srgb, var(--card-elevated) 95%, transparent);
+}
+
+html.dark .bg-white\/70 {
+  background-color: color-mix(in srgb, var(--card-elevated) 70%, transparent);
+}
+
+html.dark .bg-white\/60 {
+  background-color: color-mix(in srgb, var(--card-elevated) 60%, transparent);
+}
+
+html.dark .text-navy {
+  color: var(--foreground);
+}
+
+html.dark .text-navy\/80,
+html.dark .text-navy\/75 {
+  color: color-mix(in srgb, var(--foreground) 90%, transparent);
+}
+
+html.dark .text-navy\/70,
+html.dark .text-navy\/65 {
+  color: color-mix(in srgb, var(--foreground-muted) 95%, var(--foreground));
+}
+
+html.dark .text-navy\/60,
+html.dark .text-navy\/55,
+html.dark .text-navy\/50 {
+  color: var(--foreground-muted);
+}
+
+html.dark .text-navy\/45,
+html.dark .text-navy\/40 {
+  color: color-mix(in srgb, var(--foreground-muted) 80%, transparent);
+}
+
+html.dark .bg-gold.text-navy,
+html.dark .bg-gold .text-navy,
+html.dark [class*="bg-gold"].text-navy {
+  color: var(--navy);
+}
+
+html.dark .text-navy-light,
+html.dark .group:hover .group-hover\:text-navy-light {
+  color: var(--lagoon-accent);
+}
+
+html.dark .bg-cream\/60 {
+  background-color: color-mix(in srgb, var(--card-surface) 72%, var(--sand));
+}
+
+html.dark .border-navy\/\[0\.05\] {
+  border-color: var(--border);
+}
+
+html.dark .bg-navy\/\[0\.04\] {
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+html.dark .bg-gold\/5,
+html.dark .bg-gold\/8,
+html.dark .bg-gold\/10,
+html.dark .bg-gold\/\[0\.06\] {
+  background-color: color-mix(in srgb, var(--gold) 14%, var(--card-elevated));
+}
+
+html.dark .border-gold\/15,
+html.dark .border-gold\/20,
+html.dark .border-gold\/25,
+html.dark .border-gold\/30,
+html.dark .border-gold\/35,
+html.dark .border-gold\/40 {
+  border-color: color-mix(in srgb, var(--gold) 32%, transparent);
+}
+
+html.dark .hover\:bg-gold\/10:hover {
+  background-color: color-mix(in srgb, var(--gold) 16%, var(--card-elevated));
+}
+
+html.dark .bg-white\/50 {
+  background-color: color-mix(in srgb, var(--card-elevated) 55%, transparent);
+}
+
+html.dark .from-gold\/10.to-gold\/5 {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--gold) 16%, var(--card-surface)),
+    color-mix(in srgb, var(--gold) 9%, var(--card-surface))
+  );
+}
+
+html.dark a.bg-navy,
+html.dark button.bg-navy,
+html.dark .bg-navy.text-white {
+  background-color: var(--card-elevated);
+  color: var(--foreground);
+}
+
+html.dark .border-gold\/15.bg-gold\/\[0\.06\] {
+  background-color: color-mix(in srgb, var(--gold) 13%, var(--card-elevated));
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+html.dark .border-gold\/15.bg-gold\/\[0\.06\] .text-navy,
+html.dark .border-gold\/15.bg-gold\/\[0\.06\] .text-foreground\/60 {
+  color: var(--foreground);
+}
+
+.section-cream {
+  background-color: var(--color-cream);
+}
+.section-cream-alt,
+.section-sand {
+  background-color: var(--color-sand);
+}
+.section-ocean {
+  background-color: var(--color-ocean);
+}
+.section-coastal {
+  background-color: var(--color-coastal);
+}
+.section-navy {
+  background-color: var(--color-sand);
+  color: var(--color-navy);
+}
+.section-navy-deep {
+  background-color: var(--color-cream-alt);
+  color: var(--color-navy);
+}
+
+.gradient-hero-overlay {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-navy) 90%, transparent),
+    color-mix(in srgb, var(--color-navy) 50%, transparent),
+    color-mix(in srgb, var(--color-navy) 15%, transparent)
+  );
+}
+.gradient-card-overlay {
+  background-image: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-navy) 92%, transparent),
+    color-mix(in srgb, var(--color-navy) 35%, transparent) 45%,
+    color-mix(in srgb, var(--color-navy) 8%, transparent) 100%
+  );
+}
+.gradient-navy-overlay {
+  background-image: linear-gradient(
+    to top,
+    var(--color-navy-deep),
+    color-mix(in srgb, var(--color-navy) 45%, transparent) 55%,
+    transparent
+  );
+}
+
+.from-cream {
+  --tw-gradient-from: var(--color-cream);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+.via-cream-alt\/60 {
+  --tw-gradient-via: color-mix(in srgb, var(--color-cream-alt) 60%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent);
+}
+.to-sand {
+  --tw-gradient-to: var(--color-sand);
+}
+.to-ocean {
+  --tw-gradient-to: var(--color-ocean);
+}
+.to-coastal {
+  --tw-gradient-to: var(--color-coastal);
+}
+.to-cream {
+  --tw-gradient-to: var(--color-cream);
+}
+.to-navy {
+  --tw-gradient-to: var(--color-navy);
+}
+.to-navy-deep {
+  --tw-gradient-to: var(--color-navy-deep);
+}
+.from-navy {
+  --tw-gradient-from: var(--color-navy);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+.via-navy-deep\/80 {
+  --tw-gradient-via: color-mix(in srgb, var(--color-navy-deep) 80%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent);
+}
+.from-navy\/92 {
+  --tw-gradient-from: color-mix(in srgb, var(--color-navy) 92%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+.via-navy\/55 {
+  --tw-gradient-via: color-mix(in srgb, var(--color-navy) 55%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent);
+}
+.to-navy\/15 {
+  --tw-gradient-to: color-mix(in srgb, var(--color-navy) 15%, transparent);
+}
+.from-navy\/75 {
+  --tw-gradient-from: color-mix(in srgb, var(--color-navy) 75%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+}
+.via-navy\/10 {
+  --tw-gradient-via: color-mix(in srgb, var(--color-navy) 10%, transparent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to, transparent);
+}
+.to-navy\/25 {
+  --tw-gradient-to: color-mix(in srgb, var(--color-navy) 25%, transparent);
+}
+.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+.eyebrow-gold {
+  color: var(--color-gold);
+}
+
+.glass-nav-scrolled,
+.glass-nav-hero {
+  border: 1px solid var(--fiji-nav-border);
+  background: color-mix(in srgb, var(--fiji-nav-glass) 88%, transparent);
+  box-shadow: var(--shadow-fiji-nav);
+  backdrop-filter: blur(20px) saturate(1.22);
+  -webkit-backdrop-filter: blur(20px) saturate(1.22);
+}
+
+.fiji-luxury-nav-chrome {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.fiji-luxury-nav-shell--float {
+  z-index: 80;
+  background: var(--white);
+  box-shadow: 0 1px 0 var(--border), 0 8px 28px rgba(var(--navy-deep-rgb), 0.06);
+}
+
+.fiji-luxury-nav-shell--float .fiji-luxury-nav-chrome {
+  background: var(--white);
+}
+
+html.dark .glass-nav-scrolled,
+html.dark .glass-nav-hero {
+  background: rgba(8, 27, 34, 0.72);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Booking widget — solid fallback so cream page never shows white-on-cream */
+.booking-widget {
+  background-color: var(--white);
+  color: var(--navy);
+  border-color: var(--border);
+}
